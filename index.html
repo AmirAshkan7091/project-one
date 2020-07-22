@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="ticker.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <link rel="stylesheet"  type="text/css"  href="css.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
    
     <title>Be upto date</title>
@@ -12,21 +13,19 @@
 
 
 
-    <style>
-
-    </style>
-
-
 
 </head>
-<body>
+<body style="    color: #4a4a4a;
+font-size: 2em;
+font-weight: 400;
+line-height: 1.5;">
     <!-- navbar -->
 <header>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
 
           <a class="navbar-item" title="Newspage">
-            <img src="../images/IMG_89D082E48AD6-1.jpeg" width="112" height="28">
+            <img src="../project-one-test-2/images/IMG_89D082E48AD6-1.jpeg" width="112" height="28">
           </a>
       
           <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -76,7 +75,7 @@
                 <a class="navbar-link">
                   COVID-19
                 </a>
-        
+
                 <div class="navbar-dropdown">
                   <a class="navbar-item">
                     Protocols
@@ -146,35 +145,75 @@
 
 
 
-<!-- main div -->
-<div class="main">
-<div><span>hello!!</span></div>
-</div>
-<!--  -->
+<!-- the midle boxes -->
+<div class="columns is-desktop">
+  <!-- side box -->
+  <div class=" box">1</div>
 
-
-<!-- sid div -->
-<div class="side">
+  <!-- main box -->
+  <div class=" boxi" >1</div>
 
 </div>
-<!--  -->
+
+
+
+
+
+
+
+
+
 
 
 <!-- footer -->
 <div class="footer">
 
-    <div class="ticker">
-        <strong>News:</strong>
-        <ul id="webTicker">
-            <li><span id="news">test test test tst test test test</span></li>
-            <li><span id="news1">test test test tst test test test</span></li>
-            <li><span id="new2">test test test tst test test test</span></li>
-        </ul>
-    </div>
+  <div class="ticker">
+      <strong></strong>
+      <ul id="webTicker">
+          <li > <span class="span">1.  </span>
+            <span id="news" class="span1" style="    ">
+            test test test 
+          </span>
+        </li>
+        
+          <li > <span class="span">  >>> 2.  </span> 
+            <span id="news1" class="span1" >
+            test test test 
+          </span>
+        </li>
+        
+          <li> <span class="span">  >>> 3.  </span>
+            <span id="news2" class="span1" >
+            test test test
+           </span>
+          </li>
+          
+          <li> <span class="span">  >>> 4.  </span>
+            <span id="news3" class="span1" >
+            test test test
+           </span>
+          </li>
+          
+          <li> <span class="span">  >>> 5.  </span>
+            <span id="news4" class="span1">
+            test test test 
+          </span>
+        </li>
+        
+          <li> <span class="span">  >>> 6.  </span>
+            <span id="news5" class="span1" >
+            test test test 
+          </span>
+        </li>
 
+      </ul>
+  </div>
 
 </div>
-<!--  -->
+
+
+
 
 <script>
     !function(i){function t(t)
@@ -211,7 +250,7 @@
                     {
                         jQuery(this).data("settings",t);var e=jQuery(this),s=e.wrap('<div class="mask"></div>');s.after('<span class="tickeroverlay-left">&nbsp;</span><span class="tickeroverlay-right">&nbsp;</span>');var n,d=e.parent().wrap('<div class="tickercontainer"></div>');if(i(window).resize(function()
                         {
-                            clearTimeout(n),n=setTimeout(function(){console.log("window was resized"),l(e,!1)},500)}),e.children("li").css("white-space","nowrap"),e.children("li").css("float",t.direction),e.children("li").css("padding","0 7px"),e.children("li").css("line-height",t.height),s.css("position","relative"),s.css("overflow","hidden"),e.closest(".tickercontainer").css("height",t.height),e.closest(".tickercontainer").css("overflow","hidden"),e.css("float",t.direction),e.css("position","relative"),e.css("font","bold 10px Verdana"),e.css("list-style-type","none"),e.css("margin","0"),e.css("padding","0"),""!==t.maskleft&&""!==t.maskright){var h='url("'+t.maskleft+'")';d.find(".tickeroverlay-left").css("background-image",h),d.find(".tickeroverlay-left").css("display","block"),d.find(".tickeroverlay-left").css("pointer-events","none"),d.find(".tickeroverlay-left").css("position","absolute"),d.find(".tickeroverlay-left").css("z-index","30"),d.find(".tickeroverlay-left").css("height",t.height),d.find(".tickeroverlay-left").css("width",t.maskwidth),d.find(".tickeroverlay-left").css("top","0"),d.find(".tickeroverlay-left").css("left","-2px"),h='url("'+t.maskright+'")',d.find(".tickeroverlay-right").css("background-image",h),d.find(".tickeroverlay-right").css("display","block"),d.find(".tickeroverlay-right").css("pointer-events","none"),d.find(".tickeroverlay-right").css("position","absolute"),d.find(".tickeroverlay-right").css("z-index","30"),d.find(".tickeroverlay-right").css("height",t.height),d.find(".tickeroverlay-right").css("width",t.maskwidth),d.find(".tickeroverlay-right").css("top","0"),d.find(".tickeroverlay-right").css("right","-2px")}else d.find(".tickeroverlay-left").css("display","none"),d.find(".tickeroverlay-right").css("display","none");e.children("li").last().addClass("last");var f=l(e,!0);t.rssurl&&(c(t.rssurl,t.type,e),t.rssfrequency>0&&window.setInterval(function()
+                            clearTimeout(n),n=setTimeout(function(){console.log("window was resized"),l(e,!1)},500)}),e.children("li").css("white-space","nowrap"),e.children("li").css("float",t.direction),e.children("li").css("padding","0 7px"),e.children("li").css("line-height",t.height),s.css("position","relative"),s.css("overflow","hidden"),e.closest(".tickercontainer").css("height",t.height),e.closest(".tickercontainer").css("overflow","hidden"),e.css("float",t.direction),e.css("position","relative"),e.css("font","bold 10px Verdana"),e.css("list-style-type","none"),e.css("margin","2"),e.css("padding","0"),""!==t.maskleft&&""!==t.maskright){var h='url("'+t.maskleft+'")';d.find(".tickeroverlay-left").css("background-image",h),d.find(".tickeroverlay-left").css("display","block"),d.find(".tickeroverlay-left").css("pointer-events","none"),d.find(".tickeroverlay-left").css("position","absolute"),d.find(".tickeroverlay-left").css("z-index","30"),d.find(".tickeroverlay-left").css("height",t.height),d.find(".tickeroverlay-left").css("width",t.maskwidth),d.find(".tickeroverlay-left").css("top","0"),d.find(".tickeroverlay-left").css("left","-2px"),h='url("'+t.maskright+'")',d.find(".tickeroverlay-right").css("background-image",h),d.find(".tickeroverlay-right").css("display","block"),d.find(".tickeroverlay-right").css("pointer-events","none"),d.find(".tickeroverlay-right").css("position","absolute"),d.find(".tickeroverlay-right").css("z-index","30"),d.find(".tickeroverlay-right").css("height",t.height),d.find(".tickeroverlay-right").css("width",t.maskwidth),d.find(".tickeroverlay-right").css("top","0"),d.find(".tickeroverlay-right").css("right","0px")}else d.find(".tickeroverlay-left").css("display","none"),d.find(".tickeroverlay-right").css("display","none");e.children("li").last().addClass("last");var f=l(e,!0);t.rssurl&&(c(t.rssurl,t.type,e),t.rssfrequency>0&&window.setInterval(function()
                             {
                                 c(t.rssurl,t.type,e)}
                             ,1e3*t.rssfrequency*60)),o?(e.css("transition-timing-function",t.transition),e.css("transition-duration","0s").css(t.direction,"0"),f&&a(e,!1),e.on("transitionend webkitTransitionEnd oTransitionEnd otransitionend",function(t){return!!e.is(t.target)&&void a(i(this),!0)})):f&&r(i(this)),t.hoverpause&&e.hover(function()
