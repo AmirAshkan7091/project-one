@@ -60,3 +60,34 @@ function loadNews(searchWord) {
 }
 
 loadNews("covid-19");
+
+function moveTicker(searchWord) {
+  var queryURL =
+    "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" +
+    searchWord +
+    "&fq=source:The+New+York+Times&api-key=uGYML0VIyPS3Za2FVfIRlyWHH82oGQZ3";
+  console.log("estoy aqui:", queryURL);
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (response2) {
+    //   let artData = "response2.response.docs[" + i + "].byline";
+    //   p.text("Headline : " + response2.response.docs[i].headline.main);
+    var ticker1 = $("#news");
+    var ticker2 = $("#news1");
+    var ticker3 = $("#new2");
+    var ticker4 = $("#new2");
+    var ticker5 = $("#new2");
+    var ticker6 = $("#new2");
+    var ticker7 = $("#new2");
+    ticker1.text(response2.response.docs[0].headline.main);
+    ticker2.text(response2.response.docs[1].headline.main);
+    ticker3.text(response2.response.docs[2].headline.main);
+    ticker4.text(response2.response.docs[3].headline.main);
+    ticker5.text(response2.response.docs[4].headline.main);
+    ticker6.text(response2.response.docs[4].headline.main);
+    ticker7.text(response2.response.docs[4].headline.main);
+  });
+}
+
+moveTicker("covid-19");
