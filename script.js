@@ -59,8 +59,6 @@ function loadNews(searchWord) {
   });
 }
 
-loadNews("covid-19");
-
 function moveTicker(searchWord) {
   var queryURL =
     "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" +
@@ -85,9 +83,21 @@ function moveTicker(searchWord) {
     ticker3.text(response2.response.docs[2].headline.main);
     ticker4.text(response2.response.docs[3].headline.main);
     ticker5.text(response2.response.docs[4].headline.main);
-    ticker6.text(response2.response.docs[4].headline.main);
-    ticker7.text(response2.response.docs[4].headline.main);
+    ticker6.text(response2.response.docs[5].headline.main);
+    ticker7.text(response2.response.docs[6].headline.main);
   });
 }
 
+// function click menu News
+
+$(".navbar-item").on("click", function (event) {
+  event.preventDefault();
+  var clickedBtn = $(this).text();
+  console.log(clickedBtn);
+  $(".boxi").empty();
+  loadNews(clickedBtn);
+});
+
+// starting functions
+loadNews("covid-19");
 moveTicker("covid-19");
