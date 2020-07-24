@@ -3,21 +3,21 @@ function loadNews(searchWord) {
     "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" +
     searchWord +
     "&fq=source:The+New+York+Times&api-key=uGYML0VIyPS3Za2FVfIRlyWHH82oGQZ3";
-  console.log("estoy aqui:", queryURL);
+  // console.log("estoy aqui:", queryURL);
   $.ajax({
     url: queryURL,
     method: "GET",
   }).then(function (response2) {
-    console.log("estoy aqui 2 : ", response2);
+    // console.log("estoy aqui 2 : ", response2);
     // console.log("uv1 ; ", response2);
     // console.log("uv2 ; ", response2.copyright);
     // console.log("uv3 ; ", response2);
     for (var i = 0; i < 10; i++) {
       let artData = "response2.response.docs[" + i + "].byline";
-      console.log(
-        "https://www.nytimes.com/" +
-          response2.response.docs[i].multimedia[20].url
-      );
+      // console.log(
+      //   "https://www.nytimes.com/" +
+      //     response2.response.docs[i].multimedia[20].url
+      // );
       // console.log("uv2 ; ", response2.response.docs[i]);
       var animalDiv = $("<div></div>");
       animalDiv.addClass("responseNyt");
@@ -64,7 +64,7 @@ function moveTicker(searchWord) {
     "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" +
     searchWord +
     "&fq=source:The+New+York+Times&api-key=uGYML0VIyPS3Za2FVfIRlyWHH82oGQZ3";
-  console.log("estoy aqui:", queryURL);
+  // console.log("estoy aqui:", queryURL);
   $.ajax({
     url: queryURL,
     method: "GET",
@@ -88,56 +88,58 @@ function moveTicker(searchWord) {
   });
 }
 
-function sports () {
-  var settings = {
-  "async": true,
-  "  crossDomain": true,
-  "url": "https://free-football-soccer-videos.p.rapidapi.com/",
-  "method": "GET",
-  "headers": {
-"x-rapidapi-host": "free-football-soccer-videos.p.rapidapi.com",
-"x-rapidapi-key": "e846e03355msh594f257a54b7d94p15ae95jsnf468134b6c22"
-  }
-    }
-    $.ajax(settings).done(function (response) {
-        renderVideos(response);
-    });
-}
 function renderVideos(videos) {
-console.log(videos);
-         for (var i = 0; i < 10; i++) {
-      console.log(videos[i].competition.videos);
-            var animalDiv = $("<div></div>");
-            animalDiv.addClass("nytArticle");
-            var m = $("<h5></h5>");
-            m.text(JSON.stringify(videos[i].competition.name));
-            animalDiv.append(m);
-            var n = $("<h5></h5>");
-            n.text(JSON.stringify(videos[i].side1.url));
-            animalDiv.append(n);
-            var k = $("<h5></h5>");
-            k.text(JSON.stringify(videos[i].side2.url));
-            animalDiv.append(k);
-            var p = $("<h5></h5>");
-            p.text(JSON.stringify(videos[i].title));
-            animalDiv.append(p);
-            $(".art-body").append(animalDiv);
-            var o = $("<img>");
-            o.addClass("imageNews");
-            o.attr("src", videos[i].thumbnail);
-            $(".art-body").append(o);
-     
-       }
-      
+  $(".boxi").empty();
+  for (var i = 0; i < 10; i++) {
+    var animalDiv = $("<div></div>");
+    animalDiv.addClass("responseNyt");
+    var m = $("<h5></h5>");
+    m.text(JSON.stringify(videos[i].competition.name));
+    animalDiv.append(m);
+    var n = $("<h5></h5>");
+    n.text(JSON.stringify(videos[i].side1.url));
+    animalDiv.append(n);
+    var k = $("<h5></h5>");
+    k.text(JSON.stringify(videos[i].side2.url));
+    animalDiv.append(k);
+    var p = $("<h5></h5>");
+    p.text(JSON.stringify(videos[i].title));
+    animalDiv.append(p);
+    $(".boxi").append(animalDiv);
+    var o = $("<img>");
+    o.addClass("imageNews");
+    o.attr("src", videos[i].thumbnail);
+    $(".boxi").append(o);
+  }
 }
+
+function sports() {
+  var settings = {
+    async: true,
+    "  crossDomain": true,
+    url: "https://free-football-soccer-videos.p.rapidapi.com/",
+    method: "GET",
+    headers: {
+      "x-rapidapi-host": "free-football-soccer-videos.p.rapidapi.com",
+      "x-rapidapi-key": "e846e03355msh594f257a54b7d94p15ae95jsnf468134b6c22",
+    },
+  };
+  $.ajax(settings).done(function (response) {
+    renderVideos(response);
+  });
+}
+
 // function click menu News
 
 $(".navbar-item").on("click", function (event) {
   event.preventDefault();
-  var clickedBtn = $(this).text();
-  console.log(clickedBtn);
-  $(".boxi").empty();
-  loadNews(clickedBtn);
+  var clickedBtn = $(this).text().trim();
+  if (clickedBtn === "sports" || clickedBtn === "Sports") {
+    sports();
+  } else if (clickedBtn != "sports") {
+    $(".boxi").empty();
+    loadNews(clickedBtn);
+  }
 });
 
 // starting functions
