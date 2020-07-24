@@ -148,10 +148,6 @@ moveTicker("covid-19");
 
 
 
-
-
-
-
 // video
 $(".is-active2").on("click", function () {
   function getVideo() {
@@ -176,13 +172,20 @@ $(".is-active2").on("click", function () {
   }
   function embedVideo(data) {
     let newDiv=$("<div></div>");
-    $(".box").append(newDiv);
+    $(".musicvideo").append(newDiv);
     let selectSrc=$('<iframe></iframe>').attr('src', 'https://www.youtube.com/embed/' + data.items[0].id.videoId);
    newDiv.append(selectSrc)
   newDiv.append($("<p>").attr("style","font-size:9px;").text(data.items[0].snippet.title));
     // $('.description').text(data.items[0].snippet.description)
 }
 getVideo();
+});
+$(".is-active2").on("click", function() {
+
+
+  // We use find here and once its found it will empty the element
+  $("#sidebox").empty();
+
 });
 
 
@@ -210,11 +213,18 @@ $(".is-active1").on("click", function () {
   }
   function embedVideo(data) {
     let newDiv=$("<div></div>");
-    $(".box").append(newDiv);
+    $(".musicvideo").append(newDiv);
     let selectSrc=$('<iframe></iframe>').attr('src', 'https://www.youtube.com/embed/' + data.items[0].id.videoId);
    newDiv.append(selectSrc)
   newDiv.append($("<p>").attr("style","font-size:9px;").text(data.items[0].snippet.title));
     // $('.description').text(data.items[0].snippet.description)
 }
 getVideo();
+
+});
+$(".is-active1").on("click", function() {
+
+  // We use find here and once its found it will empty the element
+  $("#sidebox").empty();
+
 });
