@@ -146,6 +146,12 @@ $(".navbar-item").on("click", function (event) {
 loadNews("covid-19");
 moveTicker("covid-19");
 
+
+
+
+
+
+
 // video
 $(".is-active2").on("click", function () {
   function getVideo() {
@@ -153,7 +159,7 @@ $(".is-active2").on("click", function () {
       type: 'GET',
       url: 'https://www.googleapis.com/youtube/v3/search',
       data: {
-          key: 'AIzaSyBI75VwxiTaM3dqg9qNYrllTFLyYnuIFaU',
+          key: 'AIzaSyCLLXuSdSJWcXResp7CjnIAxdjw4Hg0ttA',
           q: "top 10 viral 2020",
           part: 'snippet',
           maxResults: 1,
@@ -187,7 +193,7 @@ $(".is-active1").on("click", function () {
       type: 'GET',
       url: 'https://www.googleapis.com/youtube/v3/search',
       data: {
-          key: 'AIzaSyBI75VwxiTaM3dqg9qNYrllTFLyYnuIFaU',
+          key: 'AIzaSyCLLXuSdSJWcXResp7CjnIAxdjw4Hg0ttA',
           q: "top 5 music july 2020",
           part: 'snippet',
           maxResults: 1,
