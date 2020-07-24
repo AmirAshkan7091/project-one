@@ -88,6 +88,48 @@ function moveTicker(searchWord) {
   });
 }
 
+function sports () {
+  var settings = {
+  "async": true,
+  "  crossDomain": true,
+  "url": "https://free-football-soccer-videos.p.rapidapi.com/",
+  "method": "GET",
+  "headers": {
+"x-rapidapi-host": "free-football-soccer-videos.p.rapidapi.com",
+"x-rapidapi-key": "e846e03355msh594f257a54b7d94p15ae95jsnf468134b6c22"
+  }
+    }
+    $.ajax(settings).done(function (response) {
+        renderVideos(response);
+    });
+}
+function renderVideos(videos) {
+console.log(videos);
+         for (var i = 0; i < 10; i++) {
+      console.log(videos[i].competition.videos);
+            var animalDiv = $("<div></div>");
+            animalDiv.addClass("nytArticle");
+            var m = $("<h5></h5>");
+            m.text(JSON.stringify(videos[i].competition.name));
+            animalDiv.append(m);
+            var n = $("<h5></h5>");
+            n.text(JSON.stringify(videos[i].side1.url));
+            animalDiv.append(n);
+            var k = $("<h5></h5>");
+            k.text(JSON.stringify(videos[i].side2.url));
+            animalDiv.append(k);
+            var p = $("<h5></h5>");
+            p.text(JSON.stringify(videos[i].title));
+            animalDiv.append(p);
+            $(".art-body").append(animalDiv);
+            var o = $("<img>");
+            o.addClass("imageNews");
+            o.attr("src", videos[i].thumbnail);
+            $(".art-body").append(o);
+     
+       }
+      
+}
 // function click menu News
 
 $(".navbar-item").on("click", function (event) {
