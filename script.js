@@ -194,3 +194,113 @@ function pictures(searchWord) {
 // starting functions
 loadNews("covid-19");
 moveTicker("covid-19");
+
+
+// video
+$(".is-active2").on("click", function () {
+  function getVideo() {
+    $.ajax({
+      type: 'GET',
+      url: 'https://www.googleapis.com/youtube/v3/search',
+      data: {
+          key: 'AIzaSyCLLXuSdSJWcXResp7CjnIAxdjw4Hg0ttA',
+          q: "top 10 viral 2020",
+          part: 'snippet',
+          maxResults: 1,
+          type: 'video',
+          videoEmbeddable: true,
+      },
+      success: function(data){
+          embedVideo(data)
+      },
+      error: function(response){
+          console.log("Request Failed");
+      }
+    });
+  }
+  function embedVideo(data) {
+    let newDiv=$("<div></div>");
+    $(".musicvideo").append(newDiv);
+    let selectSrc=$('<iframe></iframe>').attr('src', 'https://www.youtube.com/embed/' + data.items[0].id.videoId);
+   newDiv.append(selectSrc)
+  newDiv.append($("<p>").attr("style","font-size:9px;").text(data.items[0].snippet.title));
+    // $('.description').text(data.items[0].snippet.description)
+}
+getVideo();
+});
+$(".is-active2").on("click", function() {
+
+
+  // We use find here and once its found it will empty the element
+  $("#sidebox").empty();
+
+});
+
+
+// music
+$(".is-active1").on("click", function () {
+  function getVideo() {
+    $.ajax({
+      type: 'GET',
+      url: 'https://www.googleapis.com/youtube/v3/search',
+      data: {
+          key: 'AIzaSyCLLXuSdSJWcXResp7CjnIAxdjw4Hg0ttA',
+          q: "top 5 music july 2020",
+          part: 'snippet',
+          maxResults: 1,
+          type: 'video',
+          videoEmbeddable: true,
+      },
+      success: function(data){
+          embedVideo(data)
+      },
+      error: function(response){
+          console.log("Request Failed");
+      }
+    });
+  }
+  function embedVideo(data) {
+    let newDiv=$("<div></div>");
+    $(".musicvideo").append(newDiv);
+    let selectSrc=$('<iframe></iframe>').attr('src', 'https://www.youtube.com/embed/' + data.items[0].id.videoId);
+   newDiv.append(selectSrc)
+  newDiv.append($("<p>").attr("style","font-size:9px;").text(data.items[0].snippet.title));
+    // $('.description').text(data.items[0].snippet.description)
+}
+getVideo();
+
+});
+$(".is-active1").on("click", function() {
+
+  // We use find here and once its found it will empty the element
+  $("#sidebox").empty();
+
+});
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Get all "navbar-burger" elements
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // Check if there are any navbar burgers
+  if ($navbarBurgers.length > 0) {
+
+    // Add a click event on each of them
+    $navbarBurgers.forEach( el => {
+      el.addEventListener('click', () => {
+
+        // Get the target from the "data-target" attribute
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+
+      });
+    });
+  }
+
+});

@@ -8,6 +8,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
     />
+    <script src="./path/to/jquery.webticker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css.css" />
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -21,42 +22,50 @@
     style="color: #4a4a4a; font-size: 2em; font-weight: 400; line-height: 1.5;"
   >
     <!-- navbar -->
+    <div style="background-color: #f5dada00; margin: 2px;">
+
+    </div>
     <header>
+
       <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a class="navbar-item" title="Newspage">
-            <div style="background-color: #f5dada00; margin: 2px;">
-              <p style="font-size: 25px; color: rgb(252, 156, 172);">
-                B-<span style="font-size: 30px; color: rgb(252, 156, 172);"
-                  >UPTODATE</span
-                >
-              </p>
-            </div>
-          </a>
+          <a class="navbar-item" href="https://bulma.io">
 
-          <a
-            role="button"
-            class="navbar-burger burger"
-            aria-label="menu"
-            aria-expanded="false"
-            data-target="navbarBasicExample"
-          >
+            <p style="font-size: 27px; color: rgb(252, 156, 172);"width="112" height="28">
+              B -
+              <span style="font-size: 30px; color: rgb(252, 156, 172);"width="112" height="28">
+              UPTODATE
+            </span>
+      
+            </p> 
+          </a>
+      
+          <a role="button" 
+          class="navbar-burger burger" 
+          aria-label="menu" 
+          aria-expanded="false" 
+          data-target="navbarBasicExample">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
           </a>
         </div>
-
+      
         <div id="navbarBasicExample" class="navbar-menu">
-          <!--  -->
 
-          <!-- selectors -->
+
+
+
+
+
           <div class="navbar-start">
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">
-                News
-              </a>
 
+      
+            <div class="navbar-item has-dropdown is-hoverable">
+              <p class="navbar-link">
+                News
+              </p>
+      
               <div class="navbar-dropdown">
                 <a class="navbar-item">
                   Tech
@@ -70,18 +79,23 @@
                 <a class="navbar-item">
                   Sports
                 </a>
-                <hr class="navbar-divider" />
+                <hr class="navbar-divider">
                 <a class="navbar-item">
                   All Categories
                 </a>
               </div>
             </div>
+          </div>
 
+
+          <div class="navbar-start">
+
+      
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">
                 COVID-19
               </a>
-
+      
               <div class="navbar-dropdown">
                 <a class="navbar-item">
                   Covid-19 News
@@ -92,37 +106,44 @@
                 <a class="navbar-item">
                   Life After COVID-19
                 </a>
-                <hr class="navbar-divider" />
+                <hr class="navbar-divider">
                 <a class="navbar-item">
                   All Categories
                 </a>
               </div>
             </div>
           </div>
-          <!--  -->
+      
 
-          <!-- search bar -->
+
+
+
+
+
           <div class="navbar-end">
             <div class="navbar-item">
-              <div class="field has-addons">
-                <div class="control">
-                  <input
-                    class="txtInput"
-                    type="text"
-                    placeholder="Find......"
-                  />
-                </div>
-
-                <div class="control">
-                  <a class="button is-info" id="btnSearch">
-                    Search
-                  </a>
+              <div class="buttons">
+                <div class="field has-addons">
+                  <div class="control">
+                    <input class="input txtInput" type="text" placeholder="Find.......">
+                  </div>
+                  <div class="control">
+                    <a class="button is-info" id="btnSearch">
+                      Search
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+
+
+
+
+
         </div>
       </nav>
+
     </header>
     <!--  -->
 
@@ -135,20 +156,31 @@
       </ul>
     </div>
 
-    <!-- the midle boxes -->
-    <div class="columns is-desktop">
-      <!-- side box -->
-      <div class="box">
-        <div class="musicvideo" id="sidebox"></div>
-        <a href="index.html">Home</a>
-        <div id="" class=""></div>
+    <!--  boxes -->
+    <div class="columns ">
+      <div class="column is-half">
+        <p class="bd-notification is-info">First column</p>
+        <div class="columns is-mobile">
+          <div class="column box">
+            <p class="bd-notification is-info">50%</p>
+          </div>
+        </div>
       </div>
-
-      <!-- main box -->
-      <div class="boxi"></div>
+      <div class="column is-half">
+        <p class="bd-notification is-info">second column</p>
+        <div class="columns is-mobile">
+          <div class="column boxi">
+            <p class="bd-notification is-info">50%</p>
+          </div>
+        </div>
+      </div>
     </div>
-
+    <!--  -->
     <!-- footer -->
+
+
+
+
     <div class="footer">
       <div class="ticker">
         <strong></strong>
@@ -179,7 +211,7 @@
           </li>
         </ul>
       </div>
-    </div>
+    </div> 
 
     <script>
       !(function (i) {

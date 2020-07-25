@@ -1,17 +1,17 @@
 .span {
-  font-size: 30px;
+  font-size: large;
 }
 
 .span1 {
-  color: #4a4a4a;
-  font-size: 3em;
-  font-weight: 400;
+  color: #000000;
+  font-size: 30px;
+  font-weight: 40;
   line-height: 0.5;
+ 
 }
-
-footer {
-  background-color: #fafafa;
-  padding: 3rem 5.5rem 3rem;
+.footer{
+  background-color: rgb(255, 88, 88);
+  padding-bottom: 1em;
 }
 
 .box {
@@ -21,7 +21,7 @@ footer {
   box-shadow: 10px 10px 15px rgba(77, 77, 77, 0.493);
   border: 10px solid rgba(77, 77, 77, 0);
   border-radius: 5px;
-  background-color: rgba(129, 122, 96, 0.219);
+  background-color: rgba(230, 228, 228, 0.548);
   padding: 1% 1%;
   margin: 1% 2%;
   font-size: 12px;
@@ -35,7 +35,7 @@ footer {
   box-shadow: 10px 10px 15px rgba(77, 77, 77, 0.493);
   border: 10px solid rgba(77, 77, 77, 0);
   border-radius: 5px;
-  background-color: rgba(129, 122, 96, 0.219);
+  background-color: rgba(230, 228, 228, 0.548);
   padding: 1% 1%;
   margin: 1% 0;
   margin-left: 1%;
@@ -58,3 +58,5 @@ footer {
   width: 50;
   height: auto;
 }
+
+
