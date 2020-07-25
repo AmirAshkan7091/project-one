@@ -16,7 +16,7 @@ footer {
 
 .box {
   margin-left: 20px;
-  width: 30%;
+  width: 40%;
   height: 800px;
   box-shadow: 10px 10px 15px rgba(77, 77, 77, 0.493);
   border: 10px solid rgba(77, 77, 77, 0);
@@ -24,10 +24,13 @@ footer {
   background-color: rgba(129, 122, 96, 0.219);
   padding: 1% 1%;
   margin: 1% 2%;
+  font-size: 12px;
+  margin-left: 1%;
+  overflow-y: scroll;
 }
 
 .boxi {
-  width: 60%;
+  width: 50%;
   height: 800px;
   box-shadow: 10px 10px 15px rgba(77, 77, 77, 0.493);
   border: 10px solid rgba(77, 77, 77, 0);
@@ -49,4 +52,9 @@ footer {
 
 .webUrl {
   font-size: medium;
+}
+
+.imageNewsSide {
+  width: 50;
+  height: auto;
 }

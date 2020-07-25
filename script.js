@@ -89,14 +89,14 @@ function moveTicker(searchWord) {
 }
 
 function renderVideos(videos) {
-  $(".boxi").empty();
+  $(".box").empty();
   for (var i = 0; i < 10; i++) {
     var animalDiv = $("<div></div>");
-    animalDiv.addClass("responseNyt");
+    animalDiv.addClass("responseSide");
     var m = $("<h5></h5>");
     m.text(JSON.stringify(videos[i].competition.name));
     animalDiv.append(m);
-    var n = $("<a></a>");
+    var n = $("<a></a><br>");
     n.attr("href", videos[i].side1.url);
     n.text(JSON.stringify(videos[i].side1.url));
     animalDiv.append(n);
@@ -107,11 +107,11 @@ function renderVideos(videos) {
     var p = $("<h5></h5>");
     p.text(JSON.stringify(videos[i].title));
     animalDiv.append(p);
-    $(".boxi").append(animalDiv);
+    $(".box").append(animalDiv);
     var o = $("<img>");
-    o.addClass("imageNews");
+    o.addClass("imageNewsSide");
     o.attr("src", videos[i].thumbnail);
-    $(".boxi").append(o);
+    $(".box").append(o);
   }
 }
 
@@ -147,86 +147,3 @@ $(".navbar-item").on("click", function (event) {
 // starting functions
 loadNews("covid-19");
 moveTicker("covid-19");
-
-
-
-// video
-$(".is-active2").on("click", function () {
-  function getVideo() {
-    $.ajax({
-      type: 'GET',
-      url: 'https://www.googleapis.com/youtube/v3/search',
-      data: {
-          key: 'AIzaSyCLLXuSdSJWcXResp7CjnIAxdjw4Hg0ttA',
-          q: "top 10 viral 2020",
-          part: 'snippet',
-          maxResults: 1,
-          type: 'video',
-          videoEmbeddable: true,
-      },
-      success: function(data){
-          embedVideo(data)
-      },
-      error: function(response){
-          console.log("Request Failed");
-      }
-    });
-  }
-  function embedVideo(data) {
-    let newDiv=$("<div></div>");
-    $(".musicvideo").append(newDiv);
-    let selectSrc=$('<iframe></iframe>').attr('src', 'https://www.youtube.com/embed/' + data.items[0].id.videoId);
-   newDiv.append(selectSrc)
-  newDiv.append($("<p>").attr("style","font-size:9px;").text(data.items[0].snippet.title));
-    // $('.description').text(data.items[0].snippet.description)
-}
-getVideo();
-});
-$(".is-active2").on("click", function() {
-
-
-  // We use find here and once its found it will empty the element
-  $("#sidebox").empty();
-
-});
-
-
-// music
-$(".is-active1").on("click", function () {
-  function getVideo() {
-    $.ajax({
-      type: 'GET',
-      url: 'https://www.googleapis.com/youtube/v3/search',
-      data: {
-          key: 'AIzaSyCLLXuSdSJWcXResp7CjnIAxdjw4Hg0ttA',
-          q: "top 5 music july 2020",
-          part: 'snippet',
-          maxResults: 1,
-          type: 'video',
-          videoEmbeddable: true,
-      },
-      success: function(data){
-          embedVideo(data)
-      },
-      error: function(response){
-          console.log("Request Failed");
-      }
-    });
-  }
-  function embedVideo(data) {
-    let newDiv=$("<div></div>");
-    $(".musicvideo").append(newDiv);
-    let selectSrc=$('<iframe></iframe>').attr('src', 'https://www.youtube.com/embed/' + data.items[0].id.videoId);
-   newDiv.append(selectSrc)
-  newDiv.append($("<p>").attr("style","font-size:9px;").text(data.items[0].snippet.title));
-    // $('.description').text(data.items[0].snippet.description)
-}
-getVideo();
-
-});
-$(".is-active1").on("click", function() {
-
-  // We use find here and once its found it will empty the element
-  $("#sidebox").empty();
-
-});
