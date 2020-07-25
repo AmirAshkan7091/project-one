@@ -150,82 +150,47 @@ $(".navbar-item").on("click", function (event) {
   }
 });
 
+$("#btnSearch").on("click", function (event) {
+  event.preventDefault();
+  var clickedSrch = $(".txtInput").val();
+  // console.log("searching : ", clickedSrch);
+  $(".box").empty();
+  pictures(clickedSrch);
+});
+
+function pictures(searchWord) {
+  var API_KEY = "17639543-1a8aa8d189f802759b60ba76d";
+  var URL =
+    "https://pixabay.com/api/?key=" +
+    API_KEY +
+    "&q=" +
+    encodeURIComponent(searchWord);
+  $.getJSON(URL, function (data) {
+    if (parseInt(data.totalHits) > 0)
+      $.each(data.hits, function (i, hit) {
+        var animalDiv = $("<div></div>");
+        animalDiv.addClass("nytArticle");
+        var o = $("<img><br>");
+        o.addClass("imageNews");
+        o.attr("src", data.hits[i].previewURL);
+        $(".box").append(o);
+        animalDiv.append(o);
+        var m = $("<p></p>");
+        m.addClass("textNumber");
+        m.text(JSON.stringify(data.hits[i].downloads));
+        animalDiv.append(m);
+        $(".box").append(m);
+        var n = $("<a></a><br>");
+        n.attr("href", data.hits[i].previewURL);
+        n.text(JSON.stringify(data.hits[i].previewURL));
+        n.addClass("textUrl");
+        animalDiv.append(n);
+        $(".box").append(animalDiv);
+      });
+    else console.log("No hits");
+  });
+}
+
 // starting functions
 loadNews("covid-19");
 moveTicker("covid-19");
-
-// video
-$(".is-active2").on("click", function () {
-  function getVideo() {
-    $.ajax({
-      type: "GET",
-      url: "https://www.googleapis.com/youtube/v3/search",
-      data: {
-        key: "AIzaSyBI75VwxiTaM3dqg9qNYrllTFLyYnuIFaU",
-        q: "top 10 viral 2020",
-        part: "snippet",
-        maxResults: 1,
-        type: "video",
-        videoEmbeddable: true,
-      },
-      success: function (data) {
-        embedVideo(data);
-      },
-      error: function (response) {
-        console.log("Request Failed");
-      },
-    });
-  }
-  function embedVideo(data) {
-    let newDiv = $("<div></div>");
-    $(".box").append(newDiv);
-    let selectSrc = $("<iframe></iframe>").attr(
-      "src",
-      "https://www.youtube.com/embed/" + data.items[0].id.videoId
-    );
-    newDiv.append(selectSrc);
-    newDiv.append(
-      $("<p>").attr("style", "font-size:9px;").text(data.items[0].snippet.title)
-    );
-    // $('.description').text(data.items[0].snippet.description)
-  }
-  getVideo();
-});
-
-// music
-$(".is-active1").on("click", function () {
-  function getVideo() {
-    $.ajax({
-      type: "GET",
-      url: "https://www.googleapis.com/youtube/v3/search",
-      data: {
-        key: "AIzaSyBI75VwxiTaM3dqg9qNYrllTFLyYnuIFaU",
-        q: "top 5 music july 2020",
-        part: "snippet",
-        maxResults: 1,
-        type: "video",
-        videoEmbeddable: true,
-      },
-      success: function (data) {
-        embedVideo(data);
-      },
-      error: function (response) {
-        console.log("Request Failed");
-      },
-    });
-  }
-  function embedVideo(data) {
-    let newDiv = $("<div></div>");
-    $(".box").append(newDiv);
-    let selectSrc = $("<iframe></iframe>").attr(
-      "src",
-      "https://www.youtube.com/embed/" + data.items[0].id.videoId
-    );
-    newDiv.append(selectSrc);
-    newDiv.append(
-      $("<p>").attr("style", "font-size:9px;").text(data.items[0].snippet.title)
-    );
-    // $('.description').text(data.items[0].snippet.description)
-  }
-  getVideo();
-});
