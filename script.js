@@ -100,10 +100,14 @@ function renderVideos(videos) {
     n.attr("href", videos[i].side1.url);
     n.text(JSON.stringify(videos[i].side1.url));
     animalDiv.append(n);
-    var k = $("<a></a>");
+    var k = $("<a></a><br>");
     k.attr("href", videos[i].side2.url);
     k.text(JSON.stringify(videos[i].side2.url));
     animalDiv.append(k);
+    var l = $("<a></a>");
+    l.attr("href", videos[i].side2.url);
+    l.text(JSON.stringify(videos[i].competition.url));
+    animalDiv.append(l);
     var p = $("<h5></h5>");
     p.text(JSON.stringify(videos[i].title));
     animalDiv.append(p);
