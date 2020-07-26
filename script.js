@@ -112,9 +112,13 @@ function renderVideos(videos) {
     p.text(JSON.stringify(videos[i].title));
     animalDiv.append(p);
     $(".box").append(animalDiv);
-    var o = $("<img>");
-    o.addClass("imageNews");
-    o.attr("src", videos[i].thumbnail);
+    var o = $("<a>");
+    var b = videos[i].competition.url;
+    o.attr("href", b);
+    console.log(videos[i].competition.url);
+    var a = $("<img>").attr("src", videos[i].thumbnail);
+    a.addClass("imageSports");
+    o.wrapInner(a).parent();
     $(".box").append(o);
   }
 }
