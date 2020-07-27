@@ -7,21 +7,19 @@
   font-size: 30px;
   font-weight: 40;
   line-height: 0.5;
- 
 }
-.footer{
+.footer {
   background-color: rgb(255, 88, 88);
   padding-bottom: 1em;
 }
 
-.ash{
+.ash {
   margin-left: 0.25rem;
   margin-right: 1.25rem;
   margin-top: -0.75rem;
 }
 
-
-.btn-side{
+.btn-side {
   background-color: #ffffff;
 }
 
@@ -51,7 +49,7 @@
   margin: 1% 0;
   margin-left: 1%;
   overflow-y: scroll;
-  font-size: 15px;;
+  font-size: 15px;
 }
 
 .responseNyt {
@@ -71,37 +69,41 @@
   height: auto;
 }
 
-
 .box {
-    background-color: #fff;
-    border-radius: 6px;
-    box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
-    color: #4a4a4a;
-    display: block;
-    padding: -0.75rem;
-    height: 48%;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1),
+    0 0 0 1px rgba(10, 10, 10, 0.02);
+  color: #4a4a4a;
+  display: block;
+  padding: -0.75rem;
+  height: 48%;
 }
 
 .content h1:not(:first-child) {
   margin-top: -1em;
 }
 
-.about-div{
+.about-div {
   font-size: 15px;
   background-color: #b3b3b34b;
   color: black;
   margin: 7%;
 }
-.first-subj{
+.first-subj {
   font-size: x-large;
   font-weight: 300;
-  
+
   color: black;
   margin: 3%;
 }
-.ptag{
+.ptag {
   font-weight: 300;
-  
+
   color: black;
   margin: 3%;
+}
+
+.imagePixabay {
+  align-self: center;
 }
