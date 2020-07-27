@@ -6,15 +6,15 @@
     <!-- <link rel="stylesheet" href="ticker.css" /> -->
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
-    />
-    <script src="./path/to/jquery.webticker.min.js"></script>
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"/>
     <link rel="stylesheet" type="text/css" href="css.css" />
+
+    <script src="./path/to/jquery.webticker.min.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous" >
+    </script>
 
     <title>Be upto date</title>
   </head>
@@ -147,30 +147,138 @@
     </header>
     <!--  -->
 
-    <!-- -tabs- -->
-    <div class="tabs is-centered">
-      <ul>
-        <li class="is-active"><a>Pictures</a></li>
-        <li class="is-active1"><a>Music</a></li>
-        <li class="is-active2"><a>Videos</a></li>
-      </ul>
-    </div>
+
 
     <!--  boxes -->
-    <div class="columns ">
-      <div class="column is-half">
-        <p class="bd-notification is-info">First column</p>
+    <div class="columns ash ">
+      <div class="column is-half" id="side-div">
+        <span class="bd-notification is-info" >News  of the day</span>
+                    <!-- -tabs- -->
+    <div class="tabs is-centered">
+      <ul>
+       
+        <li class="is-active1"><a>&nbsp;</a></li>
+        <li class="is-active2"><a>&nbsp;</a></li>
+      </ul>
+    </div>
         <div class="columns is-mobile">
-          <div class="column box">
-            <p class="bd-notification is-info">50%</p>
+          <div class="column box-left">
+            <p class="bd-notification is-info">50%$(".boxi").empty();</p>
           </div>
         </div>
       </div>
       <div class="column is-half">
-        <p class="bd-notification is-info">second column</p>
+
+        <span class="bd-notification is-info" id="main-page"><a id="atag">&nbsp;</a></span>
+ <!-- -tabs- -->
+    <div class="tabs is-centered">
+      <ul>
+
+        <li class="is-active1"><a><span class="bd-notification is-info" id="btn-side">About us</span></a></li>
+        <li class="is-active2"><a><span class="bd-notification is-info" id="btn-side1">Contact us</span></a></li>
+      </ul>
+    </div>
+    <!--  -->
         <div class="columns is-mobile">
-          <div class="column boxi">
-            <p class="bd-notification is-info">50%</p>
+          <div class="column box-right">
+            
+            <span class="bd-notification is-info" id="main-box" data-target="target">
+
+              <div class="box elai">
+                <article class="media">
+                  <div class="media-left">
+
+                      <img src="./images/uci-profile2019.png" alt="uci-bootcamp" class="picImg">
+
+                  </div>
+                  <div class="media-content">
+                    <div class="content">
+
+                      <h1>
+                        Today:<hr>
+                        UCI-Bootcamp have a presentation for the first project in this course.
+                      </h1>
+                      <p>
+                        About the UC Irvine, Division of Continuing Education
+                        The University of California, Irvine Division of Continuing Education provides open enrollment learning opportunities, serving adult students online, at the UCI campus, and at employer sites nationally and worldwide.
+                      </p>
+
+                    </div>
+
+                  </div>
+                </article>
+              </div>
+
+
+
+
+
+
+              <div class="box">
+                <article class="media">
+
+                  <div class="media-left">
+                    <figure class="image is-64x64">
+                      <img src="./images/0.jpeg" alt="Corey Burkett">
+                    </figure>
+                  </div>
+                  <div class="media-content">
+                    <div class="content">
+                      <p>
+                        <strong>Corey Burkett</strong> <small>said:</small>
+                        <br>
+                        We are going to present our first project very powerful.
+                      </p>
+                    </div>
+                 </div>
+
+                </article>
+
+
+                <article class="media">
+
+                  <div class="media-left">
+                    <figure class="image is-64x64">
+                      <img src="./images/Screen Shot 2020-07-26 at 12.57.30.png" alt="Maxx Sanner">
+                    </figure>
+                  </div>
+                  <div class="media-content">
+                    <div class="content">
+                      <p>
+                        <strong>Maxx Sanner</strong> <small>said:</small>
+                        <br>
+                        We would make it easy for everyone to feel to have a powerful project.
+                      </p>
+                    </div>
+                 </div>
+
+                </article>
+
+
+                <article class="media">
+
+                  <div class="media-left">
+                    <figure class="image is-64x64">
+                      <img src="./images/Screen Shot 2020-07-26 at 12.56.03.png" alt="Image">
+                    </figure>
+                  </div>
+                  <div class="media-content">
+                    <div class="content">
+                      <p>
+                        <strong>Bryan Lowe</strong> <small>said:</small>
+                        <br>
+                        I can not give you the answers.
+                      </p>
+                    </div>
+                 </div>
+
+                </article>
+              </br><hr>
+                <h1 style="font-size: larger; font-weight: 900em;">B-UPTODATE with the lastest news about UCI-Bootcamp</h1>
+              </div>
+             
+
+            </span>
           </div>
         </div>
       </div>

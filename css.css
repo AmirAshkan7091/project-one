@@ -3,7 +3,7 @@
 }
 
 .span1 {
-  color: #000000;
+  color: #ffffff;
   font-size: 30px;
   font-weight: 40;
   line-height: 0.5;
@@ -14,7 +14,18 @@
   padding-bottom: 1em;
 }
 
-.box {
+.ash{
+  margin-left: 0.25rem;
+  margin-right: 1.25rem;
+  margin-top: -0.75rem;
+}
+
+
+.btn-side{
+  background-color: #ffffff;
+}
+
+.box-left {
   margin-left: 20px;
   width: 40%;
   height: 1100px;
@@ -29,7 +40,7 @@
   overflow-y: scroll;
 }
 
-.boxi {
+.box-right {
   width: 50%;
   height: 1100px;
   box-shadow: 10px 10px 15px rgba(77, 77, 77, 0.493);
@@ -40,6 +51,7 @@
   margin: 1% 0;
   margin-left: 1%;
   overflow-y: scroll;
+  font-size: 15px;;
 }
 
 .responseNyt {
@@ -60,3 +72,36 @@
 }
 
 
+.box {
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
+    color: #4a4a4a;
+    display: block;
+    padding: -0.75rem;
+    height: 48%;
+}
+
+.content h1:not(:first-child) {
+  margin-top: -1em;
+}
+
+.about-div{
+  font-size: 15px;
+  background-color: #b3b3b34b;
+  color: black;
+  margin: 7%;
+}
+.first-subj{
+  font-size: x-large;
+  font-weight: 300;
+  
+  color: black;
+  margin: 3%;
+}
+.ptag{
+  font-weight: 300;
+  
+  color: black;
+  margin: 3%;
+}

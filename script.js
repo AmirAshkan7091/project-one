@@ -32,29 +32,29 @@ function loadNews(searchWord) {
       var p = $("<p></p>");
       p.text("Headline : " + response2.response.docs[i].headline.main);
       animalDiv.append(p);
-      $(".boxi").append(animalDiv);
+      $(".box-left").append(animalDiv);
       var q = $("<p></p>");
       q.text("Author : " + response2.response.docs[i].byline.original);
       animalDiv.append(q);
-      $(".boxi").append(animalDiv);
+      $(".box-left").append(animalDiv);
       var r = $("<p></p>");
       r.text("Section : " + response2.response.docs[i].section_name);
       animalDiv.append(r);
-      $(".boxi").append(animalDiv);
+      $(".box-left").append(animalDiv);
       var s = $("<p></p>");
       s.text("Date published : " + response2.response.docs[i].pub_date);
       animalDiv.append(s);
-      $(".boxi").append(animalDiv);
+      $(".box-left").append(animalDiv);
       var t = $("<a></a>");
       t.addClass("webUrl");
       t.attr("href", response2.response.docs[i].web_url);
       t.text(JSON.stringify(response2.response.docs[i].web_url));
       animalDiv.append(t);
-      $(".boxi").append(animalDiv);
+      $(".box-left").append(animalDiv);
       var u = $("<hr />");
       u.addClass("webUrl");
       animalDiv.append(u);
-      $(".boxi").append(animalDiv);
+      $(".box-left").append(animalDiv);
     }
   });
 }
@@ -89,7 +89,7 @@ function moveTicker(searchWord) {
 }
 
 function renderVideos(videos) {
-  $(".box").empty();
+  $(".box-left").empty();
   for (var i = 0; i < 10; i++) {
     var animalDiv = $("<div></div>");
     animalDiv.addClass("nytArticle");
@@ -111,7 +111,7 @@ function renderVideos(videos) {
     var p = $("<h5></h5>");
     p.text(JSON.stringify(videos[i].title));
     animalDiv.append(p);
-    $(".box").append(animalDiv);
+    $(".box-left").append(animalDiv);
     var o = $("<a>");
     var b = videos[i].competition.url;
     o.attr("href", b);
@@ -119,7 +119,7 @@ function renderVideos(videos) {
     var a = $("<img>").attr("src", videos[i].thumbnail);
     a.addClass("imageSports");
     o.wrapInner(a).parent();
-    $(".box").append(o);
+    $(".box-left").append(o);
   }
 }
 
@@ -147,13 +147,13 @@ $(".navbar-item").on("click", function (event) {
   if (clickedBtn === "sports" || clickedBtn === "Sports") {
     sports();
   } else if (clickedBtn === "Tech" || clickedBtn == "tech") {
-    $(".boxi").empty();
+    $(".box-left").empty();
     loadNews("Technology");
   } else if (clickedBtn === "Politics" || clickedBtn == "politics") {
-    $(".boxi").empty();
+    $(".box-left").empty();
     loadNews("Politics");
   } else if (clickedBtn === "Health" || clickedBtn == "health") {
-    $(".boxi").empty();
+    $(".box-left").empty();
     loadNews("Health");
   }
 });
@@ -161,8 +161,8 @@ $(".navbar-item").on("click", function (event) {
 $("#btnSearch").on("click", function (event) {
   event.preventDefault();
   var clickedSrch = $(".txtInput").val();
-  // console.log("searching : ", clickedSrch);
-  $(".box").empty();
+  console.log("searching : ", clickedSrch);
+  $(".box-left").empty();
   pictures(clickedSrch);
 });
 
@@ -181,19 +181,19 @@ function pictures(searchWord) {
         var o = $("<img><br>");
         o.addClass("imageNews");
         o.attr("src", data.hits[i].previewURL);
-        $(".box").append(o);
+        $(".box-left").append(o);
         animalDiv.append(o);
         var m = $("<p></p>");
         m.addClass("textNumber");
         m.text(JSON.stringify(data.hits[i].downloads));
         animalDiv.append(m);
-        $(".box").append(m);
+        $(".box-left").append(m);
         var n = $("<a></a><br>");
         n.attr("href", data.hits[i].previewURL);
         n.text(JSON.stringify(data.hits[i].previewURL));
         n.addClass("textUrl");
         animalDiv.append(n);
-        $(".box").append(animalDiv);
+        $(".box-left").append(animalDiv);
       });
     else console.log("No hits");
   });
@@ -202,89 +202,6 @@ function pictures(searchWord) {
 // starting functions
 loadNews("covid-19");
 moveTicker("covid-19");
-
-
-// video
-$(".is-active2").on("click", function () {
-  function getVideo() {
-    $.ajax({
-      type: 'GET',
-      url: 'https://www.googleapis.com/youtube/v3/search',
-      data: {
-          key: 'AIzaSyCLLXuSdSJWcXResp7CjnIAxdjw4Hg0ttA',
-          q: "top 10 viral 2020",
-          part: 'snippet',
-          maxResults: 1,
-          type: 'video',
-          videoEmbeddable: true,
-      },
-      success: function(data){
-          embedVideo(data)
-      },
-      error: function(response){
-          console.log("Request Failed");
-      }
-    });
-  }
-  function embedVideo(data) {
-    let newDiv=$("<div></div>");
-    $(".musicvideo").append(newDiv);
-    let selectSrc=$('<iframe></iframe>').attr('src', 'https://www.youtube.com/embed/' + data.items[0].id.videoId);
-   newDiv.append(selectSrc)
-  newDiv.append($("<p>").attr("style","font-size:9px;").text(data.items[0].snippet.title));
-    // $('.description').text(data.items[0].snippet.description)
-}
-getVideo();
-});
-$(".is-active2").on("click", function() {
-
-
-  // We use find here and once its found it will empty the element
-  $("#sidebox").empty();
-
-});
-
-
-// music
-$(".is-active1").on("click", function () {
-  function getVideo() {
-    $.ajax({
-      type: 'GET',
-      url: 'https://www.googleapis.com/youtube/v3/search',
-      data: {
-          key: 'AIzaSyCLLXuSdSJWcXResp7CjnIAxdjw4Hg0ttA',
-          q: "top 5 music july 2020",
-          part: 'snippet',
-          maxResults: 1,
-          type: 'video',
-          videoEmbeddable: true,
-      },
-      success: function(data){
-          embedVideo(data)
-      },
-      error: function(response){
-          console.log("Request Failed");
-      }
-    });
-  }
-  function embedVideo(data) {
-    let newDiv=$("<div></div>");
-    $(".musicvideo").append(newDiv);
-    let selectSrc=$('<iframe></iframe>').attr('src', 'https://www.youtube.com/embed/' + data.items[0].id.videoId);
-   newDiv.append(selectSrc)
-  newDiv.append($("<p>").attr("style","font-size:9px;").text(data.items[0].snippet.title));
-    // $('.description').text(data.items[0].snippet.description)
-}
-getVideo();
-
-});
-$(".is-active1").on("click", function() {
-
-  // We use find here and once its found it will empty the element
-  $("#sidebox").empty();
-
-});
-
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -311,4 +228,240 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+});
+
+
+// function btn-side
+function mainPage(){
+  // as soon as click on sport kepp the #btn-side empty
+  $("#main-page").empty();
+  // but as soon as click on sport make a button
+      let btnSide= $("<button></button>");
+      btnSide.attr('id','btnSide');
+      btnSide.text("Home");
+      btnSide.attr("style","background-color: #ffffff;border:0px; font-size:30px; color:#4a4a4a");
+      $("#main-page").append(btnSide);
+
+      function toggleClock() {
+        $(".box-right").empty();
+        $("#main-page").html('<a id="atag">&nbsp;</a>');
+        $(".box-right").html('<span class="bd-notification is-info" id="main-box" data-target="target"><p>kekek</p></span');
+        $("#main-box").html('<div class="box elai"><article class="media"><div class="media-left"><img src="./images/uci-profile2019.png" alt="uci-bootcamp" class="picImg"></div><div class="media-content"><div class="content"><h1>Today:<hr>UCI-Bootcamp have a presentation for the first project in this course.</h1><p>About the UC Irvine, Division of Continuing Education The University of California, Irvine Division of Continuing Education provides open enrollment learning opportunities, serving adult students online, at the UCI campus, and at employer sites nationally and worldwide.</p></div></div></article></div><div class="box"><article class="media"><div class="media-left"><figure class="image is-64x64"><img src="./images/0.jpeg" alt="Corey Burkett"></figure></div><div class="media-content"><div class="content"><p><strong>Corey Burkett</strong> <small>said:</small><br>We are going to present our first project very powerful.</p></div></div></article><article class="media"><div class="media-left"><figure class="image is-64x64"><img src="./images/Screen Shot 2020-07-26 at 12.57.30.png" alt="Maxx Sanner"></figure></div><div class="media-content"><div class="content"><p><strong>Maxx Sanner</strong> <small>said:</small><br>We would make it easy for everyone to feel to have a powerful project.</p></div></div></article><article class="media"><div class="media-left"><figure class="image is-64x64"><img src="./images/Screen Shot 2020-07-26 at 12.56.03.png" alt="Image"></figure></div><div class="media-content"><div class="content"><p><strong>Bryan Lowe</strong> <small>said:</small><br>I can not give you the answers.</p></div></div></article></br><hr><h1 style="font-size: larger; font-weight: 900em;">B-UPTODATE with the lastest news about UCI-Bootcamp</h1></div>');
+      }
+
+
+        btnSide.click(function(){
+        toggleClock();
+        });
+
+  }
+
+
+// about us section
+$("#btn-side").on("click",function(){
+  let newImg=$("<img></img>");
+  newImg.attr("src","./images/unnamed.jpg");
+  newImg.attr("alt","contact-us");
+  $(".box-right").empty();
+  $(".box-right").append($("<div></div>").attr("style","margin-left:9%;").append(newImg));
+
+
+
+
+
+// first box func is about the page
+function firstBox (){
+  
+  let aboutDiv=$("<div></div>").attr("class","about-div");
+  $(".box-right").append(aboutDiv);
+
+  let mainDiv=$("<div></div>").attr("class","box");
+  let article=$("<article></article>").attr("class","media");
+
+  let medconDiv=$("<div></div>").attr("class","media-content");
+  let contDiv=$("<div></div>").attr("class","content");
+
+  let h1=$("<h1></h1>").attr("class","first-subj");
+
+// needs to be up date 
+      h1.text("@@@B-UPTODATE is a news page that helps people know more about everything ...... ");
+
+// needs to be up date 
+  let pTag=$("<p></p>").attr("class","ptag").text("bla bla bla.....kdfkdjfkdfd dkfdf dkfd fkdf dfnd fkdf dfdf dkfd fkdf kn.....................");
+
+
+
+  aboutDiv.append(mainDiv);
+  mainDiv.append(article);
+  article.append(medconDiv);
+  medconDiv.append(contDiv);
+  contDiv.append(h1)
+  contDiv.append(pTag);
+
+}
+
+// Harold box func
+function haroldBox (){
+  
+  let aboutDiv=$("<div></div>").attr("class","about-div");
+  $(".box-right").append(aboutDiv);
+
+  let mainDiv=$("<div></div>").attr("class","box");
+  let article=$("<article></article>").attr("class","media");
+
+  let medlefDiv=$("<div></div>").attr("class","media-left");
+  let figure=$("<figure></figure>").attr("class","image is-64x64");
+  let imgTag=$("<img>").attr("src","./images/Harold_Picture.jpg");
+
+  let medconDiv=$("<div></div>").attr("class","media-content");
+  let contDiv=$("<div></div>").attr("class","content");
+
+  let h1=$("<h1></h1>").attr("class","first-subj");
+
+// needs to be up date 
+      h1.text("harold");
+
+// needs to be up date 
+  let pTag=$("<p></p>").attr("class","ptag").text("bla bla bla.....kdfkdjfkdfd dkfdf dkfd fkdf dfnd fkdf dfdf dkfd fkdf kn.....................");
+
+
+
+  aboutDiv.append(mainDiv);
+  mainDiv.append(article);
+
+  article.append(medlefDiv);
+  medlefDiv.append(figure);
+  figure.append(imgTag);
+
+  article.append(medconDiv);
+  medconDiv.append(contDiv);
+  contDiv.append(h1)
+  contDiv.append(pTag);
+
+}
+
+// Fernando box func 
+function fernandoBox (){
+  
+  let aboutDiv=$("<div></div>").attr("class","about-div");
+  $(".box-right").append(aboutDiv);
+
+  let mainDiv=$("<div></div>").attr("class","box");
+  let article=$("<article></article>").attr("class","media");
+
+  let medlefDiv=$("<div></div>").attr("class","media-left");
+  let figure=$("<figure></figure>").attr("class","image is-64x64");
+  let imgTag=$("<img>").attr("src","./images/IMG_3192.jpg");
+
+  let medconDiv=$("<div></div>").attr("class","media-content");
+  let contDiv=$("<div></div>").attr("class","content");
+
+  let h1=$("<h1></h1>").attr("class","first-subj");
+
+// needs to be up date 
+      h1.text("fernando");
+
+// needs to be up date 
+  let pTag=$("<p></p>").attr("class","ptag").text("bla bla bla.....kdfkdjfkdfd dkfdf dkfd fkdf dfnd fkdf dfdf dkfd fkdf kn.....................");
+
+
+
+  aboutDiv.append(mainDiv);
+  mainDiv.append(article);
+
+  article.append(medlefDiv);
+  medlefDiv.append(figure);
+  figure.append(imgTag);
+
+  article.append(medconDiv);
+  medconDiv.append(contDiv);
+  contDiv.append(h1)
+  contDiv.append(pTag);
+
+}
+
+// Amir box func 
+function amirBox (){
+  
+  let aboutDiv=$("<div></div>").attr("class","about-div");
+  $(".box-right").append(aboutDiv);
+
+  let mainDiv=$("<div></div>").attr("class","box");
+  let article=$("<article></article>").attr("class","media");
+
+  let medlefDiv=$("<div></div>").attr("class","media-left");
+  let figure=$("<figure></figure>").attr("class","image is-64x64");
+  let imgTag=$("<img>").attr("src","./images/IMG_0899.jpg");
+
+  let medconDiv=$("<div></div>").attr("class","media-content");
+  let contDiv=$("<div></div>").attr("class","content");
+
+  
+
+
+  let h1=$("<h1></h1>").attr("class","first-subj");
+
+// needs to be up date 
+      h1.text("amir");
+
+// needs to be up date 
+  let pTag=$("<p></p>").attr("class","ptag").text("bla bla bla.....kdfkdjfkdfd dkfdf dkfd fkdf dfnd fkdf dfdf dkfd fkdf kn.....................");
+
+
+
+  aboutDiv.append(mainDiv);
+  mainDiv.append(article);
+
+  article.append(medlefDiv);
+  medlefDiv.append(figure);
+  figure.append(imgTag);
+
+  article.append(medconDiv);
+  medconDiv.append(contDiv);
+  contDiv.append(h1)
+  contDiv.append(pTag);
+
+}
+
+firstBox();
+haroldBox();
+fernandoBox();
+amirBox();
+mainPage();
+
+
+});
+
+
+
+
+
+
+
+// contact us section
+$("#btn-side1").on("click",function(){
+  $(".box-right").empty();
+
+ 
+  let contactDiv=$("<div></div>");
+  contactDiv.attr("class","contact-div");
+  $(".box-right").append(contactDiv);
+
+  let newImg=$("<img></img>");
+  newImg.attr("src","./images/contact-us-hero.jpg");
+  newImg.attr("alt","contact-us");
+
+
+  let secondSubj=$("<h1></h1>");
+  secondSubj.attr("class","first-subj");
+  secondSubj.text("@@@B-UPTODATE is a news page that helps people know more contact everything ...... ");
+  let pargSubj2=$("<p></p>");
+  pargSubj2.text("@@@@shsdsd dskdjskd dskdjksdjskjd sdjskjdks dskdjskdjsk ddjdkskdns shsndsndsndsnd ndskndskndd shfsjksjdksjdshfjshf jsfh jsh djsh jdshdjs dj djshd jshd js sjdh sjdh jss djs hd sj djshdjs  sdjshdj shs djsdhs ddjsdhjs dhjsdjsjhjhjhjhjhdjshdj");
+  
+  contactDiv.append(newImg);
+  
+  contactDiv.append(secondSubj);
+  contactDiv.append(pargSubj2);
+
+  mainPage()
 });
