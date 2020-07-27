@@ -3,22 +3,12 @@ function loadNews(searchWord) {
     "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" +
     searchWord +
     "&fq=source:The+New+York+Times&api-key=uGYML0VIyPS3Za2FVfIRlyWHH82oGQZ3";
-  // console.log("estoy aqui:", queryURL);
   $.ajax({
     url: queryURL,
     method: "GET",
   }).then(function (response2) {
-    // console.log("estoy aqui 2 : ", response2);
-    // console.log("uv1 ; ", response2);
-    // console.log("uv2 ; ", response2.copyright);
-    // console.log("uv3 ; ", response2);
     for (var i = 0; i < 10; i++) {
       let artData = "response2.response.docs[" + i + "].byline";
-      // console.log(
-      //   "https://www.nytimes.com/" +
-      //     response2.response.docs[i].multimedia[20].url
-      // );
-      // console.log("uv2 ; ", response2.response.docs[i]);
       var animalDiv = $("<div></div>");
       animalDiv.addClass("responseNyt");
       var o = $("<img>");
@@ -28,9 +18,10 @@ function loadNews(searchWord) {
         "https://www.nytimes.com/" +
           response2.response.docs[i].multimedia[20].url
       );
+      // console.log("Headline : ", response2);
       animalDiv.append(o);
       var p = $("<p></p>");
-      p.text("Headline : " + response2.response.docs[i].headline.main);
+      p.text("Headline : " + response2.response.docs[i].abstract);
       animalDiv.append(p);
       $(".box-left").append(animalDiv);
       var q = $("<p></p>");
@@ -59,34 +50,27 @@ function loadNews(searchWord) {
   });
 }
 
-function moveTicker(searchWord) {
+//Function to add information to the News Ticker
+
+function moveTicker() {
   var queryURL =
-    "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" +
-    searchWord +
-    "&fq=source:The+New+York+Times&api-key=uGYML0VIyPS3Za2FVfIRlyWHH82oGQZ3";
-  // console.log("estoy aqui:", queryURL);
+    "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=uGYML0VIyPS3Za2FVfIRlyWHH82oGQZ3";
   $.ajax({
     url: queryURL,
     method: "GET",
   }).then(function (response2) {
-    //   let artData = "response2.response.docs[" + i + "].byline";
-    //   p.text("Headline : " + response2.response.docs[i].headline.main);
-    var ticker1 = $("#news");
-    var ticker2 = $("#news1");
-    var ticker3 = $("#new2");
-    var ticker4 = $("#new2");
-    var ticker5 = $("#new2");
-    var ticker6 = $("#new2");
-    var ticker7 = $("#new2");
-    ticker1.text(response2.response.docs[0].headline.main);
-    ticker2.text(response2.response.docs[1].headline.main);
-    ticker3.text(response2.response.docs[2].headline.main);
-    ticker4.text(response2.response.docs[3].headline.main);
-    ticker5.text(response2.response.docs[4].headline.main);
-    ticker6.text(response2.response.docs[5].headline.main);
-    ticker7.text(response2.response.docs[6].headline.main);
+    var tckr = "";
+    var news = "";
+    for (var i = 0; i < 7; i++) {
+      tckr = "ticker" + i;
+      ticker1 = $("#news" + i);
+      // console.log("ticker", tckr, ticker1, response2.results[i].title);
+      ticker1.text(response2.results[i].title);
+    }
   });
 }
+
+// Function to render pictures for the sports/soccer section
 
 function renderVideos(videos) {
   $(".box-left").empty();
@@ -123,6 +107,8 @@ function renderVideos(videos) {
   }
 }
 
+// Ajax call for Rapid API - soccer
+
 function sports() {
   var settings = {
     async: true,
@@ -139,7 +125,7 @@ function sports() {
   });
 }
 
-// function click menu News
+// Function click Menu News
 
 $(".navbar-item").on("click", function (event) {
   event.preventDefault();
@@ -155,8 +141,19 @@ $(".navbar-item").on("click", function (event) {
   } else if (clickedBtn === "Health" || clickedBtn == "health") {
     $(".box-left").empty();
     loadNews("Health");
+  } else if (clickedBtn === "Covid-19 News" || clickedBtn == "covid-19 news") {
+    $(".box-left").empty();
+    loadNews("Covid-19");
+  } else if (
+    clickedBtn === "Covid-19 Statistics" ||
+    clickedBtn == "covid-19 statistics"
+  ) {
+    $(".box-left").empty();
+    loadNews("Covid-19 Statistics");
   }
 });
+
+// Button Search Click for the Pixabay Api Ajax Call
 
 $("#btnSearch").on("click", function (event) {
   event.preventDefault();
@@ -166,7 +163,12 @@ $("#btnSearch").on("click", function (event) {
   pictures(clickedSrch);
 });
 
+// Pixabay API Ajax call for the Search Button
 function pictures(searchWord) {
+  var b = $("<img><br>");
+  b.addClass("imagePixabay");
+  b.attr("src", "https://pixabay.com/static/img/public/leaderboard_b.png");
+  $(".box-left").append(b);
   var API_KEY = "17639543-1a8aa8d189f802759b60ba76d";
   var URL =
     "https://pixabay.com/api/?key=" +
@@ -185,12 +187,12 @@ function pictures(searchWord) {
         animalDiv.append(o);
         var m = $("<p></p>");
         m.addClass("textNumber");
-        m.text(JSON.stringify(data.hits[i].downloads));
+        m.text("Number of Hits : " + JSON.stringify(data.hits[i].downloads));
         animalDiv.append(m);
         $(".box-left").append(m);
         var n = $("<a></a><br>");
         n.attr("href", data.hits[i].previewURL);
-        n.text(JSON.stringify(data.hits[i].previewURL));
+        n.text("URL : " + JSON.stringify(data.hits[i].previewURL));
         n.addClass("textUrl");
         animalDiv.append(n);
         $(".box-left").append(animalDiv);
@@ -201,267 +203,250 @@ function pictures(searchWord) {
 
 // starting functions
 loadNews("covid-19");
-moveTicker("covid-19");
+moveTicker();
 
-
-document.addEventListener('DOMContentLoaded', () => {
-
+document.addEventListener("DOMContentLoaded", () => {
   // Get all "navbar-burger" elements
-  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
+  const $navbarBurgers = Array.prototype.slice.call(
+    document.querySelectorAll(".navbar-burger"),
+    0
+  );
   // Check if there are any navbar burgers
   if ($navbarBurgers.length > 0) {
-
     // Add a click event on each of them
-    $navbarBurgers.forEach( el => {
-      el.addEventListener('click', () => {
-
+    $navbarBurgers.forEach((el) => {
+      el.addEventListener("click", () => {
         // Get the target from the "data-target" attribute
         const target = el.dataset.target;
         const $target = document.getElementById(target);
-
         // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-        el.classList.toggle('is-active');
-        $target.classList.toggle('is-active');
-
+        el.classList.toggle("is-active");
+        $target.classList.toggle("is-active");
       });
     });
   }
-
 });
 
-
 // function btn-side
-function mainPage(){
+function mainPage() {
   // as soon as click on sport kepp the #btn-side empty
   $("#main-page").empty();
   // but as soon as click on sport make a button
-      let btnSide= $("<button></button>");
-      btnSide.attr('id','btnSide');
-      btnSide.text("Home");
-      btnSide.attr("style","background-color: #ffffff;border:0px; font-size:30px; color:#4a4a4a");
-      $("#main-page").append(btnSide);
+  let btnSide = $("<button></button>");
+  btnSide.attr("id", "btnSide");
+  btnSide.text("Home");
+  btnSide.attr(
+    "style",
+    "background-color: #ffffff;border:0px; font-size:30px; color:#4a4a4a"
+  );
+  $("#main-page").append(btnSide);
 
-      function toggleClock() {
-        $(".box-right").empty();
-        $("#main-page").html('<a id="atag">&nbsp;</a>');
-        $(".box-right").html('<span class="bd-notification is-info" id="main-box" data-target="target"><p>kekek</p></span');
-        $("#main-box").html('<div class="box elai"><article class="media"><div class="media-left"><img src="./images/uci-profile2019.png" alt="uci-bootcamp" class="picImg"></div><div class="media-content"><div class="content"><h1>Today:<hr>UCI-Bootcamp have a presentation for the first project in this course.</h1><p>About the UC Irvine, Division of Continuing Education The University of California, Irvine Division of Continuing Education provides open enrollment learning opportunities, serving adult students online, at the UCI campus, and at employer sites nationally and worldwide.</p></div></div></article></div><div class="box"><article class="media"><div class="media-left"><figure class="image is-64x64"><img src="./images/0.jpeg" alt="Corey Burkett"></figure></div><div class="media-content"><div class="content"><p><strong>Corey Burkett</strong> <small>said:</small><br>We are going to present our first project very powerful.</p></div></div></article><article class="media"><div class="media-left"><figure class="image is-64x64"><img src="./images/Screen Shot 2020-07-26 at 12.57.30.png" alt="Maxx Sanner"></figure></div><div class="media-content"><div class="content"><p><strong>Maxx Sanner</strong> <small>said:</small><br>We would make it easy for everyone to feel to have a powerful project.</p></div></div></article><article class="media"><div class="media-left"><figure class="image is-64x64"><img src="./images/Screen Shot 2020-07-26 at 12.56.03.png" alt="Image"></figure></div><div class="media-content"><div class="content"><p><strong>Bryan Lowe</strong> <small>said:</small><br>I can not give you the answers.</p></div></div></article></br><hr><h1 style="font-size: larger; font-weight: 900em;">B-UPTODATE with the lastest news about UCI-Bootcamp</h1></div>');
-      }
-
-
-        btnSide.click(function(){
-        toggleClock();
-        });
-
+  function toggleClock() {
+    $(".box-right").empty();
+    $("#main-page").html('<a id="atag">&nbsp;</a>');
+    $(".box-right").html(
+      '<span class="bd-notification is-info" id="main-box" data-target="target"><p>kekek</p></span'
+    );
+    $("#main-box").html(
+      '<div class="box elai"><article class="media"><div class="media-left"><img src="./images/uci-profile2019.png" alt="uci-bootcamp" class="picImg"></div><div class="media-content"><div class="content"><h1>Today:<hr>UCI-Bootcamp have a presentation for the first project in this course.</h1><p>About the UC Irvine, Division of Continuing Education The University of California, Irvine Division of Continuing Education provides open enrollment learning opportunities, serving adult students online, at the UCI campus, and at employer sites nationally and worldwide.</p></div></div></article></div><div class="box"><article class="media"><div class="media-left"><figure class="image is-64x64"><img src="./images/0.jpeg" alt="Corey Burkett"></figure></div><div class="media-content"><div class="content"><p><strong>Corey Burkett</strong> <small>said:</small><br>We are going to present our first project very powerful.</p></div></div></article><article class="media"><div class="media-left"><figure class="image is-64x64"><img src="./images/Screen Shot 2020-07-26 at 12.57.30.png" alt="Maxx Sanner"></figure></div><div class="media-content"><div class="content"><p><strong>Maxx Sanner</strong> <small>said:</small><br>We would make it easy for everyone to feel to have a powerful project.</p></div></div></article><article class="media"><div class="media-left"><figure class="image is-64x64"><img src="./images/Screen Shot 2020-07-26 at 12.56.03.png" alt="Image"></figure></div><div class="media-content"><div class="content"><p><strong>Bryan Lowe</strong> <small>said:</small><br>I can not give you the answers.</p></div></div></article></br><hr><h1 style="font-size: larger; font-weight: 900em;">B-UPTODATE with the lastest news about UCI-Bootcamp</h1></div>'
+    );
   }
-
+  btnSide.click(function () {
+    toggleClock();
+  });
+}
 
 // about us section
-$("#btn-side").on("click",function(){
-  let newImg=$("<img></img>");
-  newImg.attr("src","./images/unnamed.jpg");
-  newImg.attr("alt","contact-us");
+$("#btn-side").on("click", function () {
+  let newImg = $("<img></img>");
+  newImg.attr("src", "./images/unnamed.jpg");
+  newImg.attr("alt", "contact-us");
   $(".box-right").empty();
-  $(".box-right").append($("<div></div>").attr("style","margin-left:9%;").append(newImg));
+  $(".box-right").append(
+    $("<div></div>").attr("style", "margin-left:9%;").append(newImg)
+  );
 
+  // first box func is about the page
+  function firstBox() {
+    let aboutDiv = $("<div></div>").attr("class", "about-div");
+    $(".box-right").append(aboutDiv);
+    let mainDiv = $("<div></div>").attr("class", "box");
+    let article = $("<article></article>").attr("class", "media");
+    let medconDiv = $("<div></div>").attr("class", "media-content");
+    let contDiv = $("<div></div>").attr("class", "content");
+    let h1 = $("<h1></h1>").attr("class", "first-subj");
+    // needs to be up date
+    h1.text(
+      "@@@B-UPTODATE is a news page that helps people know more about everything ...... "
+    );
 
+    // needs to be up date
+    let pTag = $("<p></p>")
+      .attr("class", "ptag")
+      .text(
+        "bla bla bla.....kdfkdjfkdfd dkfdf dkfd fkdf dfnd fkdf dfdf dkfd fkdf kn....................."
+      );
+    aboutDiv.append(mainDiv);
+    mainDiv.append(article);
+    article.append(medconDiv);
+    medconDiv.append(contDiv);
+    contDiv.append(h1);
+    contDiv.append(pTag);
+  }
 
+  // Harold box func
+  function haroldBox() {
+    let aboutDiv = $("<div></div>").attr("class", "about-div");
+    $(".box-right").append(aboutDiv);
 
+    let mainDiv = $("<div></div>").attr("class", "box");
+    let article = $("<article></article>").attr("class", "media");
 
-// first box func is about the page
-function firstBox (){
-  
-  let aboutDiv=$("<div></div>").attr("class","about-div");
-  $(".box-right").append(aboutDiv);
+    let medlefDiv = $("<div></div>").attr("class", "media-left");
+    let figure = $("<figure></figure>").attr("class", "image is-64x64");
+    let imgTag = $("<img>").attr("src", "./images/Harold_Picture.jpg");
 
-  let mainDiv=$("<div></div>").attr("class","box");
-  let article=$("<article></article>").attr("class","media");
+    let medconDiv = $("<div></div>").attr("class", "media-content");
+    let contDiv = $("<div></div>").attr("class", "content");
 
-  let medconDiv=$("<div></div>").attr("class","media-content");
-  let contDiv=$("<div></div>").attr("class","content");
+    let h1 = $("<h1></h1>").attr("class", "first-subj");
 
-  let h1=$("<h1></h1>").attr("class","first-subj");
+    // needs to be up date
+    h1.text("Harold Zuluaga");
 
-// needs to be up date 
-      h1.text("@@@B-UPTODATE is a news page that helps people know more about everything ...... ");
+    // needs to be up date
+    let pTag = $("<p></p>")
+      .attr("class", "ptag")
+      .text(
+        "bla bla bla.....kdfkdjfkdfd dkfdf dkfd fkdf dfnd fkdf dfdf dkfd fkdf kn....................."
+      );
 
-// needs to be up date 
-  let pTag=$("<p></p>").attr("class","ptag").text("bla bla bla.....kdfkdjfkdfd dkfdf dkfd fkdf dfnd fkdf dfdf dkfd fkdf kn.....................");
+    aboutDiv.append(mainDiv);
+    mainDiv.append(article);
 
+    article.append(medlefDiv);
+    medlefDiv.append(figure);
+    figure.append(imgTag);
 
+    article.append(medconDiv);
+    medconDiv.append(contDiv);
+    contDiv.append(h1);
+    contDiv.append(pTag);
+  }
 
-  aboutDiv.append(mainDiv);
-  mainDiv.append(article);
-  article.append(medconDiv);
-  medconDiv.append(contDiv);
-  contDiv.append(h1)
-  contDiv.append(pTag);
+  // Fernando box func
+  function fernandoBox() {
+    let aboutDiv = $("<div></div>").attr("class", "about-div");
+    $(".box-right").append(aboutDiv);
 
-}
+    let mainDiv = $("<div></div>").attr("class", "box");
+    let article = $("<article></article>").attr("class", "media");
 
-// Harold box func
-function haroldBox (){
-  
-  let aboutDiv=$("<div></div>").attr("class","about-div");
-  $(".box-right").append(aboutDiv);
+    let medlefDiv = $("<div></div>").attr("class", "media-left");
+    let figure = $("<figure></figure>").attr("class", "image is-64x64");
+    let imgTag = $("<img>").attr("src", "./images/IMG_3192.jpg");
 
-  let mainDiv=$("<div></div>").attr("class","box");
-  let article=$("<article></article>").attr("class","media");
+    let medconDiv = $("<div></div>").attr("class", "media-content");
+    let contDiv = $("<div></div>").attr("class", "content");
 
-  let medlefDiv=$("<div></div>").attr("class","media-left");
-  let figure=$("<figure></figure>").attr("class","image is-64x64");
-  let imgTag=$("<img>").attr("src","./images/Harold_Picture.jpg");
+    let h1 = $("<h1></h1>").attr("class", "first-subj");
 
-  let medconDiv=$("<div></div>").attr("class","media-content");
-  let contDiv=$("<div></div>").attr("class","content");
+    // needs to be up date
+    h1.text("Fernando Angulo Donoso");
 
-  let h1=$("<h1></h1>").attr("class","first-subj");
+    // needs to be up date
+    let pTag = $("<p></p>")
+      .attr("class", "ptag")
+      .text(
+        "bla bla bla.....kdfkdjfkdfd dkfdf dkfd fkdf dfnd fkdf dfdf dkfd fkdf kn....................."
+      );
 
-// needs to be up date 
-      h1.text("harold");
+    aboutDiv.append(mainDiv);
+    mainDiv.append(article);
 
-// needs to be up date 
-  let pTag=$("<p></p>").attr("class","ptag").text("bla bla bla.....kdfkdjfkdfd dkfdf dkfd fkdf dfnd fkdf dfdf dkfd fkdf kn.....................");
+    article.append(medlefDiv);
+    medlefDiv.append(figure);
+    figure.append(imgTag);
 
+    article.append(medconDiv);
+    medconDiv.append(contDiv);
+    contDiv.append(h1);
+    contDiv.append(pTag);
+  }
 
+  // Amir box func
+  function amirBox() {
+    let aboutDiv = $("<div></div>").attr("class", "about-div");
+    $(".box-right").append(aboutDiv);
 
-  aboutDiv.append(mainDiv);
-  mainDiv.append(article);
+    let mainDiv = $("<div></div>").attr("class", "box");
+    let article = $("<article></article>").attr("class", "media");
 
-  article.append(medlefDiv);
-  medlefDiv.append(figure);
-  figure.append(imgTag);
+    let medlefDiv = $("<div></div>").attr("class", "media-left");
+    let figure = $("<figure></figure>").attr("class", "image is-64x64");
+    let imgTag = $("<img>").attr("src", "./images/IMG_0899.jpg");
 
-  article.append(medconDiv);
-  medconDiv.append(contDiv);
-  contDiv.append(h1)
-  contDiv.append(pTag);
+    let medconDiv = $("<div></div>").attr("class", "media-content");
+    let contDiv = $("<div></div>").attr("class", "content");
 
-}
+    let h1 = $("<h1></h1>").attr("class", "first-subj");
 
-// Fernando box func 
-function fernandoBox (){
-  
-  let aboutDiv=$("<div></div>").attr("class","about-div");
-  $(".box-right").append(aboutDiv);
+    // needs to be up date
+    h1.text("Amir Ashkan");
 
-  let mainDiv=$("<div></div>").attr("class","box");
-  let article=$("<article></article>").attr("class","media");
+    // needs to be up date
+    let pTag = $("<p></p>")
+      .attr("class", "ptag")
+      .text(
+        "bla bla bla.....kdfkdjfkdfd dkfdf dkfd fkdf dfnd fkdf dfdf dkfd fkdf kn....................."
+      );
 
-  let medlefDiv=$("<div></div>").attr("class","media-left");
-  let figure=$("<figure></figure>").attr("class","image is-64x64");
-  let imgTag=$("<img>").attr("src","./images/IMG_3192.jpg");
+    aboutDiv.append(mainDiv);
+    mainDiv.append(article);
 
-  let medconDiv=$("<div></div>").attr("class","media-content");
-  let contDiv=$("<div></div>").attr("class","content");
+    article.append(medlefDiv);
+    medlefDiv.append(figure);
+    figure.append(imgTag);
 
-  let h1=$("<h1></h1>").attr("class","first-subj");
+    article.append(medconDiv);
+    medconDiv.append(contDiv);
+    contDiv.append(h1);
+    contDiv.append(pTag);
+  }
 
-// needs to be up date 
-      h1.text("fernando");
-
-// needs to be up date 
-  let pTag=$("<p></p>").attr("class","ptag").text("bla bla bla.....kdfkdjfkdfd dkfdf dkfd fkdf dfnd fkdf dfdf dkfd fkdf kn.....................");
-
-
-
-  aboutDiv.append(mainDiv);
-  mainDiv.append(article);
-
-  article.append(medlefDiv);
-  medlefDiv.append(figure);
-  figure.append(imgTag);
-
-  article.append(medconDiv);
-  medconDiv.append(contDiv);
-  contDiv.append(h1)
-  contDiv.append(pTag);
-
-}
-
-// Amir box func 
-function amirBox (){
-  
-  let aboutDiv=$("<div></div>").attr("class","about-div");
-  $(".box-right").append(aboutDiv);
-
-  let mainDiv=$("<div></div>").attr("class","box");
-  let article=$("<article></article>").attr("class","media");
-
-  let medlefDiv=$("<div></div>").attr("class","media-left");
-  let figure=$("<figure></figure>").attr("class","image is-64x64");
-  let imgTag=$("<img>").attr("src","./images/IMG_0899.jpg");
-
-  let medconDiv=$("<div></div>").attr("class","media-content");
-  let contDiv=$("<div></div>").attr("class","content");
-
-  
-
-
-  let h1=$("<h1></h1>").attr("class","first-subj");
-
-// needs to be up date 
-      h1.text("amir");
-
-// needs to be up date 
-  let pTag=$("<p></p>").attr("class","ptag").text("bla bla bla.....kdfkdjfkdfd dkfdf dkfd fkdf dfnd fkdf dfdf dkfd fkdf kn.....................");
-
-
-
-  aboutDiv.append(mainDiv);
-  mainDiv.append(article);
-
-  article.append(medlefDiv);
-  medlefDiv.append(figure);
-  figure.append(imgTag);
-
-  article.append(medconDiv);
-  medconDiv.append(contDiv);
-  contDiv.append(h1)
-  contDiv.append(pTag);
-
-}
-
-firstBox();
-haroldBox();
-fernandoBox();
-amirBox();
-mainPage();
-
-
+  firstBox();
+  haroldBox();
+  fernandoBox();
+  amirBox();
+  mainPage();
 });
 
-
-
-
-
-
-
 // contact us section
-$("#btn-side1").on("click",function(){
+$("#btn-side1").on("click", function () {
   $(".box-right").empty();
 
- 
-  let contactDiv=$("<div></div>");
-  contactDiv.attr("class","contact-div");
+  let contactDiv = $("<div></div>");
+  contactDiv.attr("class", "contact-div");
   $(".box-right").append(contactDiv);
 
-  let newImg=$("<img></img>");
-  newImg.attr("src","./images/contact-us-hero.jpg");
-  newImg.attr("alt","contact-us");
+  let newImg = $("<img></img>");
+  newImg.attr("src", "./images/contact-us-hero.jpg");
+  newImg.attr("alt", "contact-us");
 
+  let secondSubj = $("<h1></h1>");
+  secondSubj.attr("class", "first-subj");
+  secondSubj.text(
+    "@@@B-UPTODATE is a news page that helps people know more contact everything ...... "
+  );
+  let pargSubj2 = $("<p></p>");
+  pargSubj2.text(
+    "@@@@shsdsd dskdjskd dskdjksdjskjd sdjskjdks dskdjskdjsk ddjdkskdns shsndsndsndsnd ndskndskndd shfsjksjdksjdshfjshf jsfh jsh djsh jdshdjs dj djshd jshd js sjdh sjdh jss djs hd sj djshdjs  sdjshdj shs djsdhs ddjsdhjs dhjsdjsjhjhjhjhjhdjshdj"
+  );
 
-  let secondSubj=$("<h1></h1>");
-  secondSubj.attr("class","first-subj");
-  secondSubj.text("@@@B-UPTODATE is a news page that helps people know more contact everything ...... ");
-  let pargSubj2=$("<p></p>");
-  pargSubj2.text("@@@@shsdsd dskdjskd dskdjksdjskjd sdjskjdks dskdjskdjsk ddjdkskdns shsndsndsndsnd ndskndskndd shfsjksjdksjdshfjshf jsfh jsh djsh jdshdjs dj djshd jshd js sjdh sjdh jss djs hd sj djshdjs  sdjshdj shs djsdhs ddjsdhjs dhjsdjsjhjhjhjhjhdjshdj");
-  
   contactDiv.append(newImg);
-  
+
   contactDiv.append(secondSubj);
   contactDiv.append(pargSubj2);
 
-  mainPage()
+  mainPage();
 });
