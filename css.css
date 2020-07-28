@@ -1,6 +1,6 @@
 body{
   color: #252525; 
-  
+  font-size: 2em; 
   font-weight: 400; 
   line-height: 1.5;
 }
@@ -8,9 +8,7 @@ body{
  .news-text{
    font-size: medium;
  }
-
-
-
+ 
 .span {
   font-size: large;
 }
