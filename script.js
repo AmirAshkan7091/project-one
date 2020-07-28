@@ -72,38 +72,66 @@ function moveTicker() {
 
 // Function to render pictures for the sports/soccer section
 
-function renderVideos(videos) {
+function renderSportsNews(news) {
+  var newsItem;
+  var soccerNewsDiv;
+  var headlineContainer;  
+  var headline;
+  var headlineLink;
+  var competitionContainer;
+  var team1;
+  var team2;
+  var imageLink;
+  var imageUrl;
+  var imageTag;
+
   $(".box-left").empty();
+
   for (var i = 0; i < 10; i++) {
-    var animalDiv = $("<div></div>");
-    animalDiv.addClass("nytArticle");
-    var m = $("<h5></h5>");
-    m.text(JSON.stringify(videos[i].competition.name));
-    animalDiv.append(m);
-    var n = $("<a></a><br>");
-    n.attr("href", videos[i].side1.url);
-    n.text(JSON.stringify(videos[i].side1.url));
-    animalDiv.append(n);
-    var k = $("<a></a><br>");
-    k.attr("href", videos[i].side2.url);
-    k.text(JSON.stringify(videos[i].side2.url));
-    animalDiv.append(k);
-    var l = $("<a></a>");
-    l.attr("href", videos[i].side2.url);
-    l.text(JSON.stringify(videos[i].competition.url));
-    animalDiv.append(l);
-    var p = $("<h5></h5>");
-    p.text(JSON.stringify(videos[i].title));
-    animalDiv.append(p);
-    $(".box-left").append(animalDiv);
-    var o = $("<a>");
-    var b = videos[i].competition.url;
-    o.attr("href", b);
-    console.log(videos[i].competition.url);
-    var a = $("<img>").attr("src", videos[i].thumbnail);
-    a.addClass("imageSports");
-    o.wrapInner(a).parent();
-    $(".box-left").append(o);
+    newsItem = news[i];
+    
+    soccerNewsDiv = $("<div></div>");
+    soccerNewsDiv.addClass("nytArticle");
+
+    headline = $("<h3></h3>").attr('class', 'headline');
+    headline.text(JSON.stringify(newsItem.competition.name).replace(/"/g, ''));
+    headlineLink = $("<a></a>");
+    headlineLink.attr("href", newsItem.competition.url);
+    headlineLink.append(headline);
+    headlineContainer = $('<div></div>');
+    headlineContainer.attr('class', 'headline-container');
+    headlineContainer.append(headlineLink)
+    soccerNewsDiv.append(headlineContainer);
+    
+    competitionContainer = $('<div></div>');
+    competitionContainer.attr('class', 'competition-container');
+
+    team1 = $("<a></a>");
+    team1.attr("href", newsItem.side1.url);
+    team1.attr('class', 'team');
+    team1.text(JSON.stringify(newsItem.side1.name).replace(/"/g, ''));
+    competitionContainer.append(team1);
+    competitionContainer.append(' <span>vs</span> ');
+    
+    team2 = $("<a></a>");
+    team2.attr("href", newsItem.side2.url);
+    team2.attr('class', 'team');
+    team2.text(JSON.stringify(newsItem.side2.name).replace(/"/g, ''));
+    competitionContainer.append(team2);
+    
+    soccerNewsDiv.append(competitionContainer);
+    
+    $(".box-left").append(soccerNewsDiv);
+
+    imageUrl = newsItem.competition.url;
+    imageLink = $("<a>");
+    imageLink.attr("href", imageUrl);
+    imageTag = $("<img>").attr("src", newsItem.thumbnail);
+    imageTag.attr('class', 'game-photo');
+    imageTag.addClass("imageSports");
+    imageLink.wrapInner(imageTag).parent();
+    $(".box-left").append(imageLink);
+    $(".box-left").append('<br>');
   }
 }
 
@@ -121,7 +149,7 @@ function sports() {
     },
   };
   $.ajax(settings).done(function (response) {
-    renderVideos(response);
+    renderSportsNews(response);
   });
 }
 
