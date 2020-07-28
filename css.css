@@ -69,6 +69,32 @@
   height: auto;
 }
 
+.headline-container {
+  margin-bottom: 20px;
+}
+
+.competition-container {
+  margin-bottom: 20px;
+}
+
+.competition-container span {
+  font-size: 20px;
+}
+
+.headline {
+  font-size: 22px;
+  line-height: 24px;
+}
+
+.team {
+  font-size: 20px;
+}
+
+.game-photo {
+  width: 350px;
+  margin-bottom: 40px;
+}
+
 .box {
   background-color: #fff;
   border-radius: 6px;
