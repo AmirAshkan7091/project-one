@@ -75,7 +75,7 @@ function moveTicker() {
 function renderSportsNews(news) {
   var newsItem;
   var soccerNewsDiv;
-  var headlineContainer;  
+  var headlineContainer;
   var headline;
   var headlineLink;
   var competitionContainer;
@@ -89,49 +89,49 @@ function renderSportsNews(news) {
 
   for (var i = 0; i < 10; i++) {
     newsItem = news[i];
-    
+
     soccerNewsDiv = $("<div></div>");
     soccerNewsDiv.addClass("nytArticle");
 
-    headline = $("<h3></h3>").attr('class', 'headline');
-    headline.text(JSON.stringify(newsItem.competition.name).replace(/"/g, ''));
+    headline = $("<h3></h3>").attr("class", "headline");
+    headline.text(JSON.stringify(newsItem.competition.name).replace(/"/g, ""));
     headlineLink = $("<a></a>");
     headlineLink.attr("href", newsItem.competition.url);
     headlineLink.append(headline);
-    headlineContainer = $('<div></div>');
-    headlineContainer.attr('class', 'headline-container');
-    headlineContainer.append(headlineLink)
+    headlineContainer = $("<div></div>");
+    headlineContainer.attr("class", "headline-container");
+    headlineContainer.append(headlineLink);
     soccerNewsDiv.append(headlineContainer);
-    
-    competitionContainer = $('<div></div>');
-    competitionContainer.attr('class', 'competition-container');
+
+    competitionContainer = $("<div></div>");
+    competitionContainer.attr("class", "competition-container");
 
     team1 = $("<a></a>");
     team1.attr("href", newsItem.side1.url);
-    team1.attr('class', 'team');
-    team1.text(JSON.stringify(newsItem.side1.name).replace(/"/g, ''));
+    team1.attr("class", "team");
+    team1.text(JSON.stringify(newsItem.side1.name).replace(/"/g, ""));
     competitionContainer.append(team1);
-    competitionContainer.append(' <span>vs</span> ');
-    
+    competitionContainer.append(" <span>vs</span> ");
+
     team2 = $("<a></a>");
     team2.attr("href", newsItem.side2.url);
-    team2.attr('class', 'team');
-    team2.text(JSON.stringify(newsItem.side2.name).replace(/"/g, ''));
+    team2.attr("class", "team");
+    team2.text(JSON.stringify(newsItem.side2.name).replace(/"/g, ""));
     competitionContainer.append(team2);
-    
+
     soccerNewsDiv.append(competitionContainer);
-    
+
     $(".box-left").append(soccerNewsDiv);
 
     imageUrl = newsItem.competition.url;
     imageLink = $("<a>");
     imageLink.attr("href", imageUrl);
     imageTag = $("<img>").attr("src", newsItem.thumbnail);
-    imageTag.attr('class', 'game-photo');
+    imageTag.attr("class", "game-photo");
     imageTag.addClass("imageSports");
     imageLink.wrapInner(imageTag).parent();
     $(".box-left").append(imageLink);
-    $(".box-left").append('<br>');
+    $(".box-left").append("<br>");
   }
 }
 
@@ -312,7 +312,7 @@ $("#btn-side").on("click", function () {
     let pTag = $("<p></p>")
       .attr("class", "ptag")
       .text(
-        "bla bla bla.....kdfkdjfkdfd dkfdf dkfd fkdf dfnd fkdf dfdf dkfd fkdf kn....................."
+        "B Up to date is an application that intends to show the latest news on different areas and also give some functionality on search, it is one enviroment that covers some of the fileds that interest to most for people"
       );
     aboutDiv.append(mainDiv);
     mainDiv.append(article);
@@ -346,7 +346,7 @@ $("#btn-side").on("click", function () {
     let pTag = $("<p></p>")
       .attr("class", "ptag")
       .text(
-        "bla bla bla.....kdfkdjfkdfd dkfdf dkfd fkdf dfnd fkdf dfdf dkfd fkdf kn....................."
+        "Studied Computer Science, some coding experience in structured programming, Program Management Experience in Aerospace 4+ years."
       );
 
     aboutDiv.append(mainDiv);
@@ -386,7 +386,7 @@ $("#btn-side").on("click", function () {
     let pTag = $("<p></p>")
       .attr("class", "ptag")
       .text(
-        "bla bla bla.....kdfkdjfkdfd dkfdf dkfd fkdf dfnd fkdf dfdf dkfd fkdf kn....................."
+        "I did a little bit of Swift on my own a while ago, but I forgot most of it, at work sometimes I have to manipulate some HTML code because I do software support. I have a little programming knowledge beside this Bootcamp."
       );
 
     aboutDiv.append(mainDiv);
@@ -420,13 +420,13 @@ $("#btn-side").on("click", function () {
     let h1 = $("<h1></h1>").attr("class", "first-subj");
 
     // needs to be up date
-    h1.text("Amir Ashkan");
+    h1.text("Amir Ashkan Salehian Dardashti");
 
     // needs to be up date
     let pTag = $("<p></p>")
       .attr("class", "ptag")
       .text(
-        "bla bla bla.....kdfkdjfkdfd dkfdf dkfd fkdf dfnd fkdf dfdf dkfd fkdf kn....................."
+        "Amir has an associate degree in computer since and also an associate degree in business administration and management. No coding experience."
       );
 
     aboutDiv.append(mainDiv);
@@ -468,7 +468,7 @@ $("#btn-side1").on("click", function () {
   );
   let pargSubj2 = $("<p></p>");
   pargSubj2.text(
-    "@@@@shsdsd dskdjskd dskdjksdjskjd sdjskjdks dskdjskdjsk ddjdkskdns shsndsndsndsnd ndskndskndd shfsjksjdksjdshfjshf jsfh jsh djsh jdshdjs dj djshd jshd js sjdh sjdh jss djs hd sj djshdjs  sdjshdj shs djsdhs ddjsdhjs dhjsdjsjhjhjhjhjhdjshdj"
+    "B Up to date is an application that intends to show the latest news on different areas and also give some functionality on search, it is one enviroment that covers some of the fileds that interest to most for people"
   );
 
   contactDiv.append(newImg);
