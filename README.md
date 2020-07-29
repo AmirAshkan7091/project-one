@@ -10,7 +10,7 @@ Our Idea was to present in an easy way 2 or 3 sections in which, with user inter
 
 We started with the research of the new framework and separately doing trials with the New YorK Times API, at the same time we started working on CSS at the time we completed some HTML.
 
-We had one idea of just keeping one main page for everything and we kept this goal, everything is goint to be in one environment/page, there will be links but those will be external to the application.
+We had one idea of just keeping one main page for everything and we kept this goal, everything is going to be in one environment/page, there will be links but those will be external to the application.
 
 Our image below contains the final design of the main page:
 
