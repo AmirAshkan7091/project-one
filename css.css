@@ -63,6 +63,7 @@ body{
   font-size: 15px;
 }
 
+
 .responseNyt {
   margin: 5px;
   padding: 10px;
@@ -72,38 +73,13 @@ body{
 }
 
 .webUrl {
-  font-size: medium;
+  font-size: 1vw;
+
 }
 
 .imageNewsSide {
   width: 50;
   height: auto;
-}
-
-.headline-container {
-  margin-bottom: 20px;
-}
-
-.competition-container {
-  margin-bottom: 20px;
-}
-
-.competition-container span {
-  font-size: 20px;
-}
-
-.headline {
-  font-size: 22px;
-  line-height: 24px;
-}
-
-.team {
-  font-size: 20px;
-}
-
-.game-photo {
-  width: 350px;
-  margin-bottom: 40px;
 }
 
 .box {
@@ -140,7 +116,82 @@ body{
   color: black;
   margin: 3%;
 }
+img{
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
+}
 
 .imagePixabay {
   align-self: center;
 }
+.break{
+  margin-top: 0px;
+  font-weight: bolder;
+  font-size: 22px;
+}
+#khar{
+  display: flex;
+}
+.photo{
+  width: 80%;
+
+  height: auto;
+}
+.pp{
+  margin-top: -15px;
+  font-size: 15px;
+}
+
+.hakhar{
+  font-size: medium;
+  font-weight: bolder;
+   font-weight: 500em;
+   text-align: center;
+   color: black;
+}
+
+.pargSubj1{
+  text-align:center ;
+  font-size:larger ;
+  font-weight:bolder;
+}
+
+.pargSubj2{
+  text-align:center;
+  font-size:small;
+}
+
+@media screen and (max-width:378px){
+  #khar{
+    display: none;
+    visibility: hidden;
+    }
+
+  }
+  
+  @media screen and (max-height:378px ){
+  #khar{
+    display: none;
+    visibility: hidden;
+    }
+  }
+
+  @media screen and (max-width:450px){
+    .pp{
+      margin-top: -31px;
+      font-size: small;
+    }
+  
+    }
+    
+    @media screen and (max-height:850px ){
+      .pp{
+        margin-top: -31px;
+        font-size: small;
+      }
+    }
+
+
+

@@ -299,8 +299,8 @@ function mainPage() {
       '<span class="bd-notification is-info" id="main-box" data-target="target"><p>kekek</p></span'
     );
     $("#main-box").html(
-      '<div class="box elai"><article class="media"><div class="media-left"><img src="./images/uci-profile2019.png" alt="uci-bootcamp" class="picImg"></div><div class="media-content"><div class="content"><h1>Today:<hr>UCI-Bootcamp have a presentation for the first project in this course.</h1><p>About the UC Irvine, Division of Continuing Education The University of California, Irvine Division of Continuing Education provides open enrollment learning opportunities, serving adult students online, at the UCI campus, and at employer sites nationally and worldwide.</p></div></div></article></div><div class="box"><article class="media"><div class="media-left"><figure class="image is-64x64"><img src="./images/0.jpeg" alt="Corey Burkett"></figure></div><div class="media-content"><div class="content"><p><strong>Corey Burkett</strong> <small>said:</small><br>We are going to present our first project very powerful.</p></div></div></article><article class="media"><div class="media-left"><figure class="image is-64x64"><img src="./images/Screen Shot 2020-07-26 at 12.57.30.png" alt="Maxx Sanner"></figure></div><div class="media-content"><div class="content"><p><strong>Maxx Sanner</strong> <small>said:</small><br>We would make it easy for everyone to feel to have a powerful project.</p></div></div></article><article class="media"><div class="media-left"><figure class="image is-64x64"><img src="./images/Screen Shot 2020-07-26 at 12.56.03.png" alt="Image"></figure></div><div class="media-content"><div class="content"><p><strong>Bryan Lowe</strong> <small>said:</small><br>I can not give you the answers.</p></div></div></article></br><hr><h1 style="font-size: larger; font-weight: 900em;">B-UPTODATE with the lastest news about UCI-Bootcamp</h1></div>'
-    );
+      '<div class="columns is-mobile"><div class="column box-right"><span class="bd-notification is-info" id="main-box" data-target="target"><div class="box elai"><br class=""><div class="columns is-multiline is-mobile"><div class="column is-multiline is-mobile " id="khar" ><img src="./images/uci-profile2019.png"  alt="uci-bootcamp"  class="photo"></div><div class="column "><h1 class="break">Today:<hr>UCI-Bootcamp have a presentation for the first project in this course.</h1></div></div><hr><div class="is-multiline is-mobile"><div class="column"><p class="pp">About the UC Irvine, Division of Continuing Education The University of California, Irvine Division of Continuing Education provides open enrollment learning opportunities, serving adult students online, at the UCI campus, and at employer sites nationally and worldwide.</p></div></div></article></div><div class="box"><article class="media"><div class="media-left"><figure class="image is-64x64"><img src="./images/0.jpeg" alt="Corey Burkett"></figure></div><div class="media-content"><div class="content"><p><strong>Corey Burkett</strong> <small>said:</small><br>We are going to present our first project very powerful.</p></div></div></article><article class="media"><div class="media-left"><figure class="image is-64x64"><img src="./images/Screen Shot 2020-07-26 at 12.57.30.png" alt="Maxx Sanner"></figure></div><div class="media-content"><div class="content"><p><strong>Maxx Sanner</strong> <small>said:</small><br>We would make it easy for everyone to feel they have a powerful project.</p></div></div></article><article class="media"><div class="media-left"><figure class="image is-64x64" ><img src="./images/Screen Shot 2020-07-26 at 12.56.03.png" alt="Image"></figure></div><div class="media-content"><div class="content"><p><strong>Bryan Lowe</strong> <small>said:</small><br>I can not give you the answers.</p></div></div></article></br><hr><h1 class="hakhar">B-UPTODATE with the lastest news about UCI-Bootcamp</h1></div></span></div></div></div></div>'
+     );
   }
   btnSide.click(function () {
     toggleClock();
@@ -309,13 +309,13 @@ function mainPage() {
 
 // about us section
 $("#btn-side").on("click", function () {
-  let newImg = $("<img></img>");
-  newImg.attr("src", "./images/unnamed.jpg");
-  newImg.attr("alt", "contact-us");
+  // let newImg = $("<img></img>");
+  // newImg.attr("src", "./images/about-us-bg-banner-2.jpg");
+  // newImg.attr("alt", "contact-us");
   $(".box-right").empty();
-  $(".box-right").append(
-    $("<div></div>").attr("style", "margin-left:9%;").append(newImg)
-  );
+  // $(".box-right").append(
+  // $("<div></div>").attr("style", "margin-left:9%;").append(newImg)
+  // );
 
   // first box func is about the page
   function firstBox() {
@@ -325,17 +325,18 @@ $("#btn-side").on("click", function () {
     let article = $("<article></article>").attr("class", "media");
     let medconDiv = $("<div></div>").attr("class", "media-content");
     let contDiv = $("<div></div>").attr("class", "content");
-    let h1 = $("<h1></h1>").attr("class", "first-subj");
+    let h1 = $("<h1></h1>").addClass("first-subj");
     // needs to be up date
     h1.text(
-      "@@@B-UPTODATE is a news page that helps people know more about everything ...... "
+      "B-UPTODATE is one of the UCI-Bootcamp's project as a news channel. "
     );
 
     // needs to be up date
     let pTag = $("<p></p>")
       .attr("class", "ptag")
       .text(
-        "B Up to date is an application that intends to show the latest news on different areas and also give some functionality on search, it is one enviroment that covers some of the fileds that interest to most for people"
+        "We are here to provide you with the latest world wide news. Our mission is to deliver the news with the greatest diversity to our audiences. We will only provide you with facts where bias news has no place. We will try to respect every view and opinion. This page was made by three UCI students. They will interduce themselvs next." 
+
       );
     aboutDiv.append(mainDiv);
     mainDiv.append(article);
@@ -449,7 +450,7 @@ $("#btn-side").on("click", function () {
     let pTag = $("<p></p>")
       .attr("class", "ptag")
       .text(
-        "Amir has an associate degree in computer since and also an associate degree in business administration and management. No coding experience."
+        "Amir has an associate degree in Computer Science and also an associate degree in Business Administration and Management. This is his first coding experience."
       );
 
     aboutDiv.append(mainDiv);
@@ -477,27 +478,64 @@ $("#btn-side1").on("click", function () {
   $(".box-right").empty();
 
   let contactDiv = $("<div></div>");
-  contactDiv.attr("class", "contact-div");
+  contactDiv.addClass("contact-div");
   $(".box-right").append(contactDiv);
 
   let newImg = $("<img></img>");
   newImg.attr("src", "./images/contact-us-hero.jpg");
   newImg.attr("alt", "contact-us");
 
-  let secondSubj = $("<h1></h1>");
-  secondSubj.attr("class", "first-subj");
-  secondSubj.text(
-    "@@@B-UPTODATE is a news page that helps people know more contact everything ...... "
+  let khat=$("<hr>");
+  
+
+  let pargSubj1= $("<p></p>");
+  pargSubj1.text(
+    "Have you heard ?"
   );
+  pargSubj1.addClass("pargSubj1");
+  
+  
+  let brTag=$("</br>");
+  let brTag1=$("</br>");
+
+
   let pargSubj2 = $("<p></p>");
   pargSubj2.text(
-    "B Up to date is an application that intends to show the latest news on different areas and also give some functionality on search, it is one enviroment that covers some of the fileds that interest to most for people"
+    "We can share your voice with the world."
   );
+  pargSubj2.addClass("pargSubj2");
+ 
+
+
+  let aTag=$("<a></a>");
+  aTag.attr("href","mailto:amirashsd@yahoo.com")
+
+  let pargSubj3 = $("<p></p>");
+  pargSubj3.text(
+    "Email us"
+  );
+  pargSubj3.addClass("pargSubj2");
+
 
   contactDiv.append(newImg);
-
-  contactDiv.append(secondSubj);
+  contactDiv.append(khat);
+  contactDiv.append(pargSubj1);
+  contactDiv.append(brTag);
+  
   contactDiv.append(pargSubj2);
+contactDiv.append(brTag1);
+
+
+  contactDiv.append(aTag);
+  
+
+  aTag.append(pargSubj3);
+ 
+
+
+  
+
+
 
   mainPage();
 });
