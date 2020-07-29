@@ -14,7 +14,7 @@ We had one idea of just keeping one main page for everything and we kept this go
 
 Our image below contains the final design of the main page:
 
-![Image of StartScreen](https://github.com/AmirAshkan7091/project-one/tree/master/images/start_image.png?raw=true)
+![Image of StartScreen](https://raw.githubusercontent.com/AmirAshkan7091/project-one/master/images/start_image.png)
 
 Below we list the sections in our project:
 
