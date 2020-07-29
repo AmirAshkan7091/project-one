@@ -1,0 +1,16 @@
+{
+  "folders": [
+	{
+		"path": "../my-first-react-app"
+	},
+	{
+		"path": ".."
+	},
+	{
+		"path": "."
+	}
+],
+  "settings": {
+    "git.ignoreLimitWarning": true
+  }
+}
