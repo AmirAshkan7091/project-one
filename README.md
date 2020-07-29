@@ -1,10 +1,12 @@
 # B UPTODATE Application Overview
 
+This is the first project for our Coding Bootcamp in a Group/Team setting.
+
 Following all requirements for this task we would like to present how this application was planned and its execution:
 
-We started with a simple design and based on the design we started planning who was going to be doing what. Immediately after we started working on some ideas for the execution.
+We started with a simple design and based on the design we started planning on assigning tasks. Immediately after we started working on some ideas for the execution.
 
-Our Idea was to present in an easy way 2 or 3 sections in which with user interaction we can show some current events regarding news, sports and Covid-19. We also thought of doing a ticker news to present headline news at the bottom of the page. Since we had 12 days for the completion we focused on what was practical and quick to do and what we had on hand.
+Our Idea was to present in an easy way 2 or 3 sections in which, with user interaction, we can show some current events regarding news, sports and Covid-19. We also thought of doing a ticker news to present headline news at the bottom of the page. Since we had 12 days for the completion we focused on what was practical and quick to do and what we had on hand.
 
 We started with the research of the new framework and separately doing trials with the New YorK Times API, at the same time we started working on CSS at the time we completed some HTML.
 
