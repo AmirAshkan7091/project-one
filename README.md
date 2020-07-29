@@ -1,8 +1,46 @@
 # B UPTODATE Application Overview
 
-Following all requirements for this task we would like to present how this applicaiton is presented:
+Following all requirements for this task we would like to present how this application was planned and its execution:
 
-![Image of StartScreen](https://github.com/AmirAshkan7091/project-one/tree/master/images/start_image.png)
+We started with a simple design and based on the design we started planning who was going to be doing what. Immediately after we started working on some ideas for the execution.
+
+Our Idea was to present in an easy way 2 or 3 sections in which with user interaction we can show some current events regarding news, sports and Covid-19. We also thought of doing a ticker news to present headline news at the bottom of the page. Since we had 12 days for the completion we focused on what was practical and quick to do and what we had on hand.
+
+We started with the research of the new framework and separately doing trials with the New YorK Times API, at the same time we started working on CSS at the time we completed some HTML.
+
+We had one idea of just keeping one main page for everything and we kept this goal, everything is goint to be in one environment/page, there will be links but those will be external to the application.
+
+Our image below contains the final design of the main page:
+
+![Image of StartScreen](https://github.com/AmirAshkan7091/project-one/tree/master/images/start_image.png?raw=true)
+
+Below we list the sections in our project:
+
+- Menu Bar
+  - Search Bar
+- Main Content Div
+  - News Content and Search Results
+  - Aout Us and Contact Us
+- Footer
+  - News Ticker
+
+# Menu Options
+
+Options included on the Menu are:
+
+- Technology
+- Politics
+- Health
+- Sports
+- Covid-19 News
+- Covid-19 Statistics
+
+# APIS Used
+
+1. New York Times API - News
+2. New York Times API - Headlines
+3. Rapid API - Sports (Soccer)
+4. Pixabay API - General Search
 
 # Project 1
 
