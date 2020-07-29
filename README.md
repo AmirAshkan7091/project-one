@@ -1,8 +1,42 @@
 # B UPTODATE Application Overview
 
-Following all requirements for this task we would like to present how this applicaiton is presented:
+Following all requirements for this task we would like to present how this application was accomplished:
 
 ![Image of StartScreen](https://github.com/AmirAshkan7091/project-one/tree/master/images/start_image.png)
+
+B Up to date is an application that allows the user to select different topics on news and to switch to other news including sports and health.  We have also added 2 specific sections for Covid-19  and a section to search any picture topic, all this without keeping an eye on the headlines for the day in our News Ticker!
+
+## Concept
+
+Description: Basic Web Page with a Menu framework and Handling of APIs particularly focused on News.
+
+
+Motivation for development? First project to develop with a team in Web Development
+
+
+User story:  Would you like to be up to date with the News in the world? Then B-Uptodate will show you that and more….!!!
+
+## Process
+
+* Technologies used: HTML, CSS, Javascript, Ajax
+
+* Breakdown of tasks and roles
+
+    * Ajax calls (1 Person)
+    * HTML FrameWork (1 Person)
+    * HTML Basis and CSS (1 Person)
+
+* Challenges: A new system to coordinate and to collaborate, a lot of preparation and meetings to keep in the loop, within goals but focused on the execution in a timely manner.
+Successes: We finished ahead of time, functionality was always taken first, we made sure it was first that the looks, once it was working we focused on making it look best.
+
+## Directions for Future Development
+
+* Create links for the News Ticker
+* Create more Menu Options
+* Create more links for sports
+* Develop Tabs instead of to basic sections (divs)
+* Give option to store the layout in local Storage
+
 
 # Project 1
 
